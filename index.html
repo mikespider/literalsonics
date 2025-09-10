@@ -7,66 +7,99 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      color: #222;
-      background: #fdfdfd;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      color: #f4f4f4;
+      background: linear-gradient(135deg, #0d0d0d, #1a1a2e);
       line-height: 1.6;
     }
     header {
-      background: linear-gradient(135deg, #1a1a1a, #333);
-      color: white;
-      padding: 4rem 2rem;
+      background: linear-gradient(135deg, #111, #222);
+      color: #fff;
+      padding: 5rem 2rem;
       text-align: center;
+      position: relative;
+      overflow: hidden;
     }
     header h1 {
-      font-size: 3rem;
+      font-size: 3.5rem;
       margin: 0;
+      letter-spacing: 2px;
     }
     header p {
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       margin-top: 1rem;
       max-width: 700px;
       margin-left: auto;
       margin-right: auto;
+      opacity: 0.9;
+    }
+    /* Animated waveform background */
+    .wave {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 200%;
+      height: 100px;
+      background: url('https://www.transparenttextures.com/patterns/wave.png');
+      background-size: 200px 100px;
+      animation: waveMove 8s linear infinite;
+      opacity: 0.15;
+    }
+    @keyframes waveMove {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
     section {
       padding: 3rem 2rem;
-      max-width: 1000px;
+      max-width: 1100px;
       margin: auto;
     }
     h2 {
       margin-bottom: 1rem;
-      color: #333;
+      color: #ffcc00;
+      text-align: center;
+      font-size: 2rem;
     }
     .services {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
+      margin-top: 2rem;
     }
     .service {
-      background: #fafafa;
-      border-radius: 12px;
-      padding: 1.5rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      background: rgba(255,255,255,0.05);
+      border-radius: 16px;
+      padding: 2rem;
+      backdrop-filter: blur(5px);
+      transition: transform 0.3s;
+    }
+    .service:hover {
+      transform: translateY(-5px);
+    }
+    .service h3 {
+      color: #ffcc00;
     }
     footer {
-      background: #111;
-      color: #eee;
+      background: #000;
+      color: #aaa;
       text-align: center;
       padding: 2rem;
+      font-size: 0.9rem;
     }
     a.button {
       display: inline-block;
-      margin-top: 1rem;
-      padding: 0.75rem 1.5rem;
-      background: #444;
-      color: white;
-      border-radius: 6px;
+      margin-top: 1.5rem;
+      padding: 0.85rem 1.8rem;
+      background: #ffcc00;
+      color: #111;
+      border-radius: 25px;
       text-decoration: none;
-      transition: background 0.3s;
+      font-weight: bold;
+      transition: background 0.3s, transform 0.2s;
     }
     a.button:hover {
-      background: #666;
+      background: #ffdb4d;
+      transform: scale(1.05);
     }
   </style>
 </head>
@@ -74,11 +107,12 @@
   <header>
     <h1>Literal Sonics</h1>
     <p>Revealing the hidden music in shapes, quantities, and movements through data sonification.</p>
+    <div class="wave"></div>
   </header>
 
   <section>
     <h2>About Us</h2>
-    <p>Literal Sonics transforms the unseen into the heard. We specialize in <strong>data sonification</strong>, turning patterns of information into sound, creating immersive <strong>aural snapshots</strong> of places and moments, and developing <strong>sound landscapes</strong> and innovative <strong>audio software</strong>.</p>
+    <p style="text-align:center; max-width:800px; margin:auto;">Literal Sonics transforms the unseen into the heard. We specialize in <strong>data sonification</strong>, turning patterns of information into sound, creating immersive <strong>aural snapshots</strong> of places and moments, and developing <strong>sound landscapes</strong> and innovative <strong>audio software</strong>.</p>
   </section>
 
   <section>
@@ -105,8 +139,8 @@
 
   <section>
     <h2>Get in Touch</h2>
-    <p>Interested in collaborating, licensing our software, or commissioning a custom sonification? Let’s talk.</p>
-    <a href="mailto:info@literalsonics.com" class="button">Contact Us</a>
+    <p style="text-align:center;">Interested in collaborating, licensing our software, or commissioning a custom sonification? Let’s talk.</p>
+    <p style="text-align:center;"><a href="mailto:info@literalsonics.com" class="button">Contact Us</a></p>
   </section>
 
   <footer>
@@ -114,3 +148,4 @@
   </footer>
 </body>
 </html>
+
