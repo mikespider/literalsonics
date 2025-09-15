@@ -11,6 +11,8 @@
       color: #f4f4f4;
       background: linear-gradient(135deg, #0d0d0d, #1a1a2e);
       line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
     }
     header {
       background: linear-gradient(135deg, #111, #222);
@@ -19,6 +21,7 @@
       text-align: center;
       position: relative;
       overflow: hidden;
+      z-index: 2;
     }
     header h1 {
       font-size: 3.5rem;
@@ -44,6 +47,7 @@
       background-size: 200px 100px;
       animation: waveMove 8s linear infinite;
       opacity: 0.15;
+      z-index: 1;
     }
     @keyframes waveMove {
       0% { transform: translateX(0); }
@@ -53,6 +57,8 @@
       padding: 3rem 2rem;
       max-width: 1100px;
       margin: auto;
+      position: relative;
+      z-index: 2;
     }
     h2 {
       margin-bottom: 1rem;
@@ -85,6 +91,8 @@
       text-align: center;
       padding: 2rem;
       font-size: 0.9rem;
+      position: relative;
+      z-index: 2;
     }
     a.button {
       display: inline-block;
@@ -101,9 +109,37 @@
       background: #ffdb4d;
       transform: scale(1.05);
     }
+    /* Background product images */
+    .bg-product {
+      position: fixed;
+      top: 50%;
+      width: 400px;
+      opacity: 0.2;
+      filter: drop-shadow(0 0 20px rgba(255, 204, 0, 0.4));
+      transform: translateY(-50%);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .bg-left {
+      left: -100px;
+      transform: translateY(-50%) perspective(800px) rotateY(20deg);
+    }
+    .bg-right {
+      right: -100px;
+      transform: translateY(-50%) perspective(800px) rotateY(-20deg);
+    }
+    @media (max-width: 768px) {
+      .bg-product {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
+  <!-- Background products -->
+  <img src="product1.png" alt="Product 1" class="bg-product bg-left">
+  <img src="product2.png" alt="Product 2" class="bg-product bg-right">
+
   <header>
     <h1>Literal Sonics</h1>
     <p>Revealing the hidden music in shapes, quantities, and movements through data sonification.</p>
@@ -148,4 +184,5 @@
   </footer>
 </body>
 </html>
+
 
