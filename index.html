@@ -109,37 +109,31 @@
       background: #ffdb4d;
       transform: scale(1.05);
     }
+
     /* Background product images */
-    
- .bg-product {
-    position: fixed;
-    top: 50%;
-    width: 650px;
-    opacity: 0.25;
-    filter: drop-shadow(0 0 25px rgba(255, 204, 0, 0.5));
-    transform: translateY(-50%);
-    z-index: 0;
-    pointer-events: none;
-  }
-  .bg-left {
-    left: -180px;
-    transform: translateY(-50%) perspective(1000px) rotateY(15deg);
-  }
-  .bg-right {
-    right: -180px;
-    transform: translateY(-50%) perspective(1000px) rotateY(-15deg);
-  }
-  @media (max-width: 768px) {
     .bg-product {
-      display: none;
+      position: fixed;
+      top: 50%;
+      width: 650px;
+      opacity: 0.25;
+      filter: drop-shadow(0 0 25px rgba(255, 204, 0, 0.5));
+      transform: translateY(-50%);
+      z-index: 0;
+      pointer-events: none;
     }
-  }
-</style>
-
-<!-- Background products -->
-<img src="product1.png" alt="Product 1" class="bg-product bg-left">
-<img src="product2.png" alt="Product 2" class="bg-product bg-right">
-
+    .bg-left {
+      left: 50px; /* moved inside screen */
+      transform: translateY(-50%) perspective(1000px) rotateY(15deg);
+    }
+    .bg-right {
+      right: 50px; /* moved inside screen */
+      transform: translateY(-50%) perspective(1000px) rotateY(-15deg);
+    }
+    @media (max-width: 768px) {
+      .bg-product {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -191,5 +185,3 @@
   </footer>
 </body>
 </html>
-
-
