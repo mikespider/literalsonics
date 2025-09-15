@@ -1,208 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Literal Sonics</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      color: #f4f4f4;
-      background: linear-gradient(135deg, #0d0d0d, #1a1a2e);
-      line-height: 1.6;
-      position: relative;
-      overflow-x: hidden;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Literal Sonics</title>
+<style>
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: #f4f4f4;
+  background: linear-gradient(135deg, #0d0d0d, #1a1a2e);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
 
-    header {
-      background: linear-gradient(135deg, #111, #222);
-      color: #fff;
-      padding: 5rem 2rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      z-index: 2;
-    }
+header {
+  background: linear-gradient(135deg, #111, #222);
+  color: #fff;
+  padding: 5rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+}
 
-    header h1 {
-      font-size: 3.5rem;
-      margin: 0;
-      letter-spacing: 2px;
-    }
+header h1 {
+  font-size: 3.5rem;
+  margin: 0;
+  letter-spacing: 2px;
+}
 
-    header p {
-      font-size: 1.3rem;
-      margin-top: 1rem;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      opacity: 0.9;
-    }
+header p {
+  font-size: 1.3rem;
+  margin-top: 1rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.9;
+}
 
-    /* Animated waveform background using CSS gradient */
-    .wave {
-      position: absolute;
-      bottom: 0;
-      left: -25%;
-      width: 150%;
-      height: 80px;
-      background: repeating-linear-gradient(
-        90deg,
-        rgba(255,204,0,0.6),
-        rgba(255,204,0,0.6) 2px,
-        transparent 2px,
-        transparent 6px
-      );
-      animation: waveMove 2s linear infinite;
-      z-index: 1;
-    }
+/* Dual outer waves */
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 200%;
+  height: 80px;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255,204,0,0.5),
+    rgba(255,204,0,0.5) 2px,
+    transparent 2px,
+    transparent 6px
+  );
+  z-index: 1;
+  transform: translateX(-50%);
+  opacity: 0.6;
+}
 
-    @keyframes waveMove {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
-    }
+.wave-left {
+  animation: moveLeft 3s linear infinite;
+}
 
-    section {
-      padding: 3rem 2rem;
-      max-width: 1100px;
-      margin: auto;
-      position: relative;
-      z-index: 2;
-    }
+.wave-right {
+  animation: moveRight 3s linear infinite;
+}
 
-    h2 {
-      margin-bottom: 1rem;
-      color: #ffcc00;
-      text-align: center;
-      font-size: 2rem;
-    }
+@keyframes moveLeft {
+  0% { transform: translateX(-50%) translateX(0); }
+  100% { transform: translateX(-50%) translateX(-100%); }
+}
 
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
+@keyframes moveRight {
+  0% { transform: translateX(-50%) translateX(0); }
+  100% { transform: translateX(-50%) translateX(100%); }
+}
 
-    .service {
-      background: rgba(255,255,255,0.05);
-      border-radius: 16px;
-      padding: 2rem;
-      backdrop-filter: blur(5px);
-      transition: transform 0.3s;
-      cursor: pointer;
-    }
+/* Center sine wave */
+.wave-center {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 100%;
+  height: 40px;
+  background: transparent;
+  border-top: 2px solid rgba(255,204,0,0.8);
+  z-index: 2;
+  transform: translateX(-50%);
+  /* create sine effect using background linear gradient and mask */
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255,204,0,0.8) 2px,
+    rgba(255,204,0,0.8) 4px
+  );
+  background-size: 20px 40px;
+  animation: sineMove 2s linear infinite;
+}
 
-    .service:hover {
-      transform: translateY(-5px);
-    }
+@keyframes sineMove {
+  0% { background-position-x: 0; }
+  100% { background-position-x: 40px; }
+}
 
-    .service h3 {
-      color: #ffcc00;
-    }
+/* Sections & other content */
+section {
+  padding: 3rem 2rem;
+  max-width: 1100px;
+  margin: auto;
+  position: relative;
+  z-index: 2;
+}
 
-    footer {
-      background: #000;
-      color: #aaa;
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      position: relative;
-      z-index: 2;
-    }
+h2 {
+  margin-bottom: 1rem;
+  color: #ffcc00;
+  text-align: center;
+  font-size: 2rem;
+}
 
-    a.button {
-      display: inline-block;
-      margin-top: 1.5rem;
-      padding: 0.85rem 1.8rem;
-      background: #ffcc00;
-      color: #111;
-      border-radius: 25px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s, transform 0.2s;
-    }
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
 
-    a.button:hover {
-      background: #ffdb4d;
-      transform: scale(1.05);
-    }
+.service {
+  background: rgba(255,255,255,0.05);
+  border-radius: 16px;
+  padding: 2rem;
+  backdrop-filter: blur(5px);
+  transition: transform 0.3s;
+  cursor: pointer;
+}
 
-    /* Background product images */
-    .bg-product {
-      position: fixed;
-      top: 50%;
-      width: 650px;
-      transform: translateY(-50%);
-      z-index: 0;
-      pointer-events: none;
-      filter: drop-shadow(0 0 15px rgba(255, 204, 0, 0.3)); /* thinner glow */
-    }
+.service:hover {
+  transform: translateY(-5px);
+}
 
-    .bg-left {
-      left: 50px;
-      transform: translateY(-50%) perspective(1000px) rotateY(15deg);
-    }
+.service h3 {
+  color: #ffcc00;
+}
 
-    .bg-right {
-      right: 50px;
-      transform: translateY(-50%) perspective(1000px) rotateY(-15deg);
-    }
+footer {
+  background: #000;
+  color: #aaa;
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+  position: relative;
+  z-index: 2;
+}
 
-    @media (max-width: 768px) {
-      .bg-product {
-        display: none;
-      }
-    }
-  </style>
+a.button {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.85rem 1.8rem;
+  background: #ffcc00;
+  color: #111;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+}
+
+a.button:hover {
+  background: #ffdb4d;
+  transform: scale(1.05);
+}
+
+/* Background product images */
+.bg-product {
+  position: fixed;
+  top: 50%;
+  width: 650px;
+  transform: translateY(-50%);
+  z-index: 0;
+  pointer-events: none;
+  filter: drop-shadow(0 0 15px rgba(255, 204, 0, 0.3));
+}
+
+.bg-left {
+  left: 50px;
+  transform: translateY(-50%) perspective(1000px) rotateY(15deg);
+}
+
+.bg-right {
+  right: 50px;
+  transform: translateY(-50%) perspective(1000px) rotateY(-15deg);
+}
+
+@media (max-width: 768px) {
+  .bg-product {
+    display: none;
+  }
+}
+</style>
 </head>
 <body>
-  <!-- Background products -->
-  <img src="product1.png" alt="Product 1" class="bg-product bg-left">
-  <img src="product2.png" alt="Product 2" class="bg-product bg-right">
+<!-- Background products -->
+<img src="product1.png" alt="Product 1" class="bg-product bg-left">
+<img src="product2.png" alt="Product 2" class="bg-product bg-right">
 
-  <header>
-    <h1>Literal Sonics</h1>
-    <p>Revealing the hidden music in shapes, quantities, and movements through data sonification.</p>
-    <div class="wave"></div>
-  </header>
+<header>
+  <h1>Literal Sonics</h1>
+  <p>Revealing the hidden music in shapes, quantities, and movements through data sonification.</p>
+  <!-- Dual waves -->
+  <div class="wave wave-left"></div>
+  <div class="wave wave-right"></div>
+  <div class="wave-center"></div>
+</header>
 
-  <section>
-    <h2>About Us</h2>
-    <p style="text-align:center; max-width:800px; margin:auto;">Literal Sonics transforms what is seen into the heard. We specialize in <strong>data sonification</strong>, turning patterns of information into sound, creating immersive <strong>aural snapshots</strong> of places and moments, and developing <strong>sound landscapes</strong> and innovative <strong>audio software</strong>.</p>
-  </section>
+<section>
+  <h2>About Us</h2>
+  <p style="text-align:center; max-width:800px; margin:auto;">Literal Sonics transforms what is seen into the heard. We specialize in <strong>data sonification</strong>, turning patterns of information into sound, creating immersive <strong>aural snapshots</strong> of places and moments, and developing <strong>sound landscapes</strong> and innovative <strong>audio software</strong>.</p>
+</section>
 
-  <section>
-    <h2>What We Do</h2>
-    <div class="services">
-      <div class="service">
-        <h3>Data Sonification</h3>
-        <p>Transforming numerical data, shapes, and movements into meaningful, musical experiences.</p>
-      </div>
-      <div class="service">
-        <h3>Aural Snapshots</h3>
-        <p>Capturing the sonic essence of a moment in time or a physical location.</p>
-      </div>
-      <div class="service">
-        <h3>Sound Landscapes</h3>
-        <p>Designing immersive audio environments that tell stories through sound.</p>
-      </div>
-      <div class="service">
-        <h3>Audio Software</h3>
-        <p>Creating tools that empower artists, scientists, and listeners to explore sound in new ways.</p>
-      </div>
+<section>
+  <h2>What We Do</h2>
+  <div class="services">
+    <div class="service">
+      <h3>Data Sonification</h3>
+      <p>Transforming numerical data, shapes, and movements into meaningful, musical experiences.</p>
     </div>
-  </section>
+    <div class="service">
+      <h3>Aural Snapshots</h3>
+      <p>Capturing the sonic essence of a moment in time or a physical location.</p>
+    </div>
+    <div class="service">
+      <h3>Sound Landscapes</h3>
+      <p>Designing immersive audio environments that tell stories through sound.</p>
+    </div>
+    <div class="service">
+      <h3>Audio Software</h3>
+      <p>Creating tools that empower artists, scientists, and listeners to explore sound in new ways.</p>
+    </div>
+  </div>
+</section>
 
-  <section>
-    <h2>Get in Touch</h2>
-    <p style="text-align:center;">Interested in collaborating, licensing our software, or commissioning a custom sonification? Let’s talk.</p>
-    <p style="text-align:center;"><a href="mailto:info@literalsonics.com" class="button">Contact Us</a></p>
-  </section>
+<section>
+  <h2>Get in Touch</h2>
+  <p style="text-align:center;">Interested in collaborating, licensing our software, or commissioning a custom sonification? Let’s talk.</p>
+  <p style="text-align:center;"><a href="mailto:info@literalsonics.com" class="button">Contact Us</a></p>
+</section>
 
-  <footer>
-    <p>&copy; 2025 Literal Sonics. All rights reserved.</p>
-  </footer>
+<footer>
+  <p>&copy; 2025 Literal Sonics. All rights reserved.</p>
+</footer>
 </body>
 </html>
