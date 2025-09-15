@@ -50,6 +50,7 @@ header p {
   z-index: 1;
 }
 
+/* Yellow splitting waves */
 .wave {
   position: absolute;
   width: 50%;
@@ -64,42 +65,36 @@ header p {
   opacity: 0.6;
 }
 
-.wave-left {
-  left: 0;
-  animation: moveLeft 3s linear infinite;
-}
+.wave-left { left: 0; animation: moveLeft 3s linear infinite; }
+.wave-right { right: 0; animation: moveRight 3s linear infinite; }
 
-.wave-right {
-  right: 0;
-  animation: moveRight 3s linear infinite;
-}
+@keyframes moveLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+@keyframes moveRight { 0% { transform: translateX(0); } 100% { transform: translateX(100%); } }
 
-@keyframes moveLeft {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
-}
-
-@keyframes moveRight {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(100%); }
-}
-
-/* Sine wave animation */
-.wave-sine {
+/* Masked sine wave */
+.sine-mask {
   position: absolute;
   top: 0;
   left: 50%;
-  width: 50%;
+  width: 50%; /* width of the gap between waves */
   height: 100%;
   transform: translateX(-50%);
-  overflow: visible;
+  overflow: hidden; /* hides parts under the yellow waves */
   z-index: 2;
-  animation: sineMove 2s linear infinite;
+}
+
+.wave-sine {
+  width: 2000px; /* wider than mask so it can animate */
+  height: 100%;
+}
+
+.sine-group {
+  animation: sineMove 4s linear infinite;
 }
 
 @keyframes sineMove {
-  0% { transform: translateX(-50%) translateX(0); }
-  100% { transform: translateX(-50%) translateX(-100px); }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-1000px); }
 }
 
 
@@ -207,17 +202,24 @@ a.button:hover {
   <h1>Literal Sonics</h1>
   <p>Revealing the hidden music in shapes, quantities, and movements through data sonification.</p>
 
-   <div class="wave-container">
-    <!-- Yellow splitting waves -->
-    <div class="wave wave-left"></div>
-    <div class="wave wave-right"></div>
+  <div class="wave-container">
+  <!-- Yellow splitting waves -->
+  <div class="wave wave-left"></div>
+  <div class="wave wave-right"></div>
 
-    <!-- Real sine wave using SVG -->
-    <svg class="wave-sine" viewBox="0 0 1000 40" preserveAspectRatio="none">
-      <path d="M0,20 Q25,0 50,20 T100,20 T150,20 T200,20 T250,20 T300,20 T350,20 T400,20 T450,20 T500,20 T550,20 T600,20 T650,20 T700,20 T750,20 T800,20 T850,20 T900,20 T950,20 T1000,20" 
-            stroke="rgba(200,200,200,0.5)" stroke-width="2" fill="transparent"/>
+  <!-- Masked sine wave -->
+  <div class="sine-mask">
+    <svg class="wave-sine" viewBox="0 0 2000 40" preserveAspectRatio="none">
+      <g class="sine-group">
+        <path d="M0,20 Q25,0 50,20 T100,20 T150,20 T200,20 T250,20 T300,20 T350,20 T400,20 T450,20 T500,20 
+                 T550,20 T600,20 T650,20 T700,20 T750,20 T800,20 T850,20 T900,20 T950,20 T1000,20
+                 T1050,20 T1100,20 T1150,20 T1200,20 T1250,20 T1300,20 T1350,20 T1400,20 T1450,20 T1500,20
+                 T1550,20 T1600,20 T1650,20 T1700,20 T1750,20 T1800,20 T1850,20 T1900,20 T1950,20 T2000,20" 
+              stroke="rgba(200,200,200,0.5)" stroke-width="2" fill="transparent"/>
+      </g>
     </svg>
   </div>
+</div>
 </header>
 
 <section>
