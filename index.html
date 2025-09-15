@@ -84,8 +84,14 @@ header p {
 }
 
 .wave-sine {
-  width: 2000px; /* wider than mask so it can animate */
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
   height: 100%;
+  transform: translateX(-50%);
+  overflow: visible;
+  z-index: 2;
 }
 
 .sine-group {
@@ -93,9 +99,10 @@ header p {
 }
 
 @keyframes sineMove {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-1000px); }
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-1000px); } /* move exactly half of the path width */
 }
+
 
 
 /* Sections & content */
