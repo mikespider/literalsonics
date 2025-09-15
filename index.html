@@ -71,37 +71,27 @@ header p {
 @keyframes moveLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
 @keyframes moveRight { 0% { transform: translateX(0); } 100% { transform: translateX(100%); } }
 
-/* Masked sine wave */
-.sine-mask {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 50%; /* width of the gap between waves */
-  height: 100%;
-  transform: translateX(-50%);
-  overflow: hidden; /* hides parts under the yellow waves */
-  z-index: 2;
-}
-
+/* Sine wave styling and smooth animation */
 .wave-sine {
   position: absolute;
   top: 0;
   left: 50%;
-  width: 50%;
+  width: 200%;   /* wider than viewport for smooth loop */
   height: 100%;
   transform: translateX(-50%);
-  overflow: visible;
-  z-index: 2;
+  z-index: 0;    /* under yellow waves */
 }
 
-.sine-group {
+.wave-sine rect {
   animation: sineMove 4s linear infinite;
 }
 
 @keyframes sineMove {
   0%   { transform: translateX(0); }
-  100% { transform: translateX(-1000px); } /* move exactly half of the path width */
+  100% { transform: translateX(-100px); } /* slide by exactly one pattern width */
 }
+
+
 
 
 
@@ -210,24 +200,22 @@ a.button:hover {
   <p>Revealing the hidden music in shapes, quantities, and movements through data sonification.</p>
 
   <div class="wave-container">
-  <!-- Yellow splitting waves -->
-  <div class="wave wave-left"></div>
-  <div class="wave wave-right"></div>
+    <!-- Yellow splitting waves -->
+    <div class="wave wave-left"></div>
+    <div class="wave wave-right"></div>
 
-  <!-- Masked sine wave -->
-  <div class="sine-mask">
+    <!-- Smooth fully visible sine wave -->
     <svg class="wave-sine" viewBox="0 0 2000 40" preserveAspectRatio="none">
-      <g class="sine-group">
-        <path d="M0,20 Q25,0 50,20 T100,20 T150,20 T200,20 T250,20 T300,20 T350,20 T400,20 T450,20 T500,20 
-                 T550,20 T600,20 T650,20 T700,20 T750,20 T800,20 T850,20 T900,20 T950,20 T1000,20
-                 T1050,20 T1100,20 T1150,20 T1200,20 T1250,20 T1300,20 T1350,20 T1400,20 T1450,20 T1500,20
-                 T1550,20 T1600,20 T1650,20 T1700,20 T1750,20 T1800,20 T1850,20 T1900,20 T1950,20 T2000,20" 
-              stroke="rgba(200,200,200,0.5)" stroke-width="2" fill="transparent"/>
-      </g>
+      <defs>
+        <pattern id="sinePattern" x="0" y="0" width="100" height="40" patternUnits="userSpaceOnUse">
+          <path d="M0,20 Q25,0 50,20 T100,20" stroke="rgba(200,200,200,0.5)" stroke-width="2" fill="none"/>
+        </pattern>
+      </defs>
+      <rect width="2000" height="40" fill="url(#sinePattern)" />
     </svg>
   </div>
-</div>
 </header>
+
 
 <section>
   <h2>About Us</h2>
