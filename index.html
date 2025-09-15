@@ -39,13 +39,22 @@ header p {
   opacity: 0.9;
 }
 
-/* Dual outer waves */
-.wave {
+/* Top waves container */
+.wave-container {
   position: absolute;
-  bottom: 0;
+  top: 60%;
   left: 50%;
   width: 200%;
   height: 80px;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+/* Yellow splitting waves */
+.wave {
+  position: absolute;
+  width: 50%;
+  height: 100%;
   background: repeating-linear-gradient(
     90deg,
     rgba(255,204,0,0.5),
@@ -53,50 +62,46 @@ header p {
     transparent 2px,
     transparent 6px
   );
-  z-index: 1;
-  transform: translateX(-50%);
   opacity: 0.6;
 }
 
 .wave-left {
+  left: 0;
   animation: moveLeft 3s linear infinite;
 }
 
 .wave-right {
+  right: 0;
   animation: moveRight 3s linear infinite;
 }
 
 @keyframes moveLeft {
-  0% { transform: translateX(-50%) translateX(0); }
-  100% { transform: translateX(-50%) translateX(-100%); }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
 }
 
 @keyframes moveRight {
-  0% { transform: translateX(-50%) translateX(0); }
-  100% { transform: translateX(-50%) translateX(100%); }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(100%); }
 }
 
-/* Center sine wave */
+/* Grey center sine wave */
 .wave-center {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 50%;
-  width: 100%;
-  height: 40px;
-  background: transparent;
-  border-top: 2px solid rgba(255,204,0,0.8);
-  z-index: 2;
-  transform: translateX(-50%);
-  /* create sine effect using background linear gradient and mask */
-  background-image: repeating-linear-gradient(
+  width: 50%;
+  height: 100%;
+  background: repeating-linear-gradient(
     0deg,
     transparent,
-    transparent 2px,
-    rgba(255,204,0,0.8) 2px,
-    rgba(255,204,0,0.8) 4px
+    transparent 5px,
+    rgba(200,200,200,0.5) 5px,
+    rgba(200,200,200,0.5) 10px
   );
-  background-size: 20px 40px;
+  transform: translateX(-50%);
   animation: sineMove 2s linear infinite;
+  z-index: 2;
 }
 
 @keyframes sineMove {
@@ -104,7 +109,7 @@ header p {
   100% { background-position-x: 40px; }
 }
 
-/* Sections & other content */
+/* Sections & content */
 section {
   padding: 3rem 2rem;
   max-width: 1100px;
@@ -207,10 +212,13 @@ a.button:hover {
 <header>
   <h1>Literal Sonics</h1>
   <p>Revealing the hidden music in shapes, quantities, and movements through data sonification.</p>
-  <!-- Dual waves -->
-  <div class="wave wave-left"></div>
-  <div class="wave wave-right"></div>
-  <div class="wave-center"></div>
+
+  <!-- Waves container -->
+  <div class="wave-container">
+    <div class="wave wave-left"></div>
+    <div class="wave wave-right"></div>
+    <div class="wave-center"></div>
+  </div>
 </header>
 
 <section>
