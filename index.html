@@ -14,6 +14,7 @@
       position: relative;
       overflow-x: hidden;
     }
+
     header {
       background: linear-gradient(135deg, #111, #222);
       color: #fff;
@@ -23,11 +24,13 @@
       overflow: hidden;
       z-index: 2;
     }
+
     header h1 {
       font-size: 3.5rem;
       margin: 0;
       letter-spacing: 2px;
     }
+
     header p {
       font-size: 1.3rem;
       margin-top: 1rem;
@@ -37,22 +40,27 @@
       opacity: 0.9;
     }
 
-    /* Animated waveform background */
+    /* Animated waveform background using CSS gradient */
     .wave {
       position: absolute;
-      left: 0;
       bottom: 0;
-      width: 250%;
-      height: 150px;
-      background: url('https://www.transparenttextures.com/patterns/wave.png');
-      background-size: 300px 150px;
-      animation: waveMove 6s linear infinite;
-      opacity: 0.6; /* increased opacity */
+      left: -25%;
+      width: 150%;
+      height: 80px;
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(255,204,0,0.6),
+        rgba(255,204,0,0.6) 2px,
+        transparent 2px,
+        transparent 6px
+      );
+      animation: waveMove 2s linear infinite;
       z-index: 1;
     }
+
     @keyframes waveMove {
       0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+      100% { transform: translateX(-100%); }
     }
 
     section {
@@ -62,32 +70,38 @@
       position: relative;
       z-index: 2;
     }
+
     h2 {
       margin-bottom: 1rem;
       color: #ffcc00;
       text-align: center;
       font-size: 2rem;
     }
+
     .services {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
       margin-top: 2rem;
     }
+
     .service {
       background: rgba(255,255,255,0.05);
       border-radius: 16px;
       padding: 2rem;
       backdrop-filter: blur(5px);
       transition: transform 0.3s;
+      cursor: pointer;
     }
+
     .service:hover {
       transform: translateY(-5px);
-      cursor:pointer;
     }
+
     .service h3 {
       color: #ffcc00;
     }
+
     footer {
       background: #000;
       color: #aaa;
@@ -97,6 +111,7 @@
       position: relative;
       z-index: 2;
     }
+
     a.button {
       display: inline-block;
       margin-top: 1.5rem;
@@ -108,6 +123,7 @@
       font-weight: bold;
       transition: background 0.3s, transform 0.2s;
     }
+
     a.button:hover {
       background: #ffdb4d;
       transform: scale(1.05);
@@ -115,23 +131,25 @@
 
     /* Background product images */
     .bg-product {
-      position: absolute; /* stays on screen when scrolling */
+      position: fixed;
       top: 50%;
       width: 650px;
-      opacity: 0.85; /* much brighter */
-      filter: drop-shadow(0 0 35px rgba(255, 204, 0, 0.4));
       transform: translateY(-50%);
       z-index: 0;
       pointer-events: none;
+      filter: drop-shadow(0 0 15px rgba(255, 204, 0, 0.3)); /* thinner glow */
     }
+
     .bg-left {
       left: 50px;
       transform: translateY(-50%) perspective(1000px) rotateY(15deg);
     }
+
     .bg-right {
       right: 50px;
       transform: translateY(-50%) perspective(1000px) rotateY(-15deg);
     }
+
     @media (max-width: 768px) {
       .bg-product {
         display: none;
