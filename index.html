@@ -50,7 +50,6 @@ header p {
   z-index: 1;
 }
 
-/* Yellow splitting waves */
 .wave {
   position: absolute;
   width: 50%;
@@ -85,29 +84,24 @@ header p {
   100% { transform: translateX(100%); }
 }
 
-/* Grey center sine wave */
-.wave-center {
+/* Sine wave animation */
+.wave-sine {
   position: absolute;
   top: 0;
   left: 50%;
   width: 50%;
   height: 100%;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 5px,
-    rgba(200,200,200,0.5) 5px,
-    rgba(200,200,200,0.5) 10px
-  );
   transform: translateX(-50%);
-  animation: sineMove 2s linear infinite;
+  overflow: visible;
   z-index: 2;
+  animation: sineMove 2s linear infinite;
 }
 
 @keyframes sineMove {
-  0% { background-position-x: 0; }
-  100% { background-position-x: 40px; }
+  0% { transform: translateX(-50%) translateX(0); }
+  100% { transform: translateX(-50%) translateX(-100px); }
 }
+
 
 /* Sections & content */
 section {
@@ -213,11 +207,16 @@ a.button:hover {
   <h1>Literal Sonics</h1>
   <p>Revealing the hidden music in shapes, quantities, and movements through data sonification.</p>
 
-  <!-- Waves container -->
-  <div class="wave-container">
+   <div class="wave-container">
+    <!-- Yellow splitting waves -->
     <div class="wave wave-left"></div>
     <div class="wave wave-right"></div>
-    <div class="wave-center"></div>
+
+    <!-- Real sine wave using SVG -->
+    <svg class="wave-sine" viewBox="0 0 1000 40" preserveAspectRatio="none">
+      <path d="M0,20 Q25,0 50,20 T100,20 T150,20 T200,20 T250,20 T300,20 T350,20 T400,20 T450,20 T500,20 T550,20 T600,20 T650,20 T700,20 T750,20 T800,20 T850,20 T900,20 T950,20 T1000,20" 
+            stroke="rgba(200,200,200,0.5)" stroke-width="2" fill="transparent"/>
+    </svg>
   </div>
 </header>
 
