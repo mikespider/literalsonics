@@ -137,6 +137,17 @@ h2 {
   color: #ffcc00;
 }
 
+  .service a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+
+  .services a:hover .service {
+  transform: translateY(-5px);
+}
+
 footer {
   background: #000;
   color: #aaa;
@@ -248,11 +259,13 @@ a.button:hover {
       <h3>Sound Landscapes</h3>
       <p>Designing immersive audio environments that tell stories through sound.</p>
     </div>
-   <a href="audio_software.html"> <div class="service">
+   <div class="service">
+      <a href="audio_software.html">
       <h3>Audio Software</h3>
       <p>Creating tools that empower artists, scientists, and listeners to explore data and sound in new ways.</p>
-    </div>
-   </a>
+    </a>
+   </div>
+  
   </div>
 </section>
 
