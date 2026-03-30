@@ -12,6 +12,8 @@ body {
   background: linear-gradient(135deg, #0d0d0d, #1a1a2e);
   line-height: 1.6;
   overflow-x: hidden;
+  position: relative;   /* ADD THIS */
+  z-index: 0;           /* ADD THIS */
 }
 
 header {
@@ -168,7 +170,7 @@ a.button:hover {
   top: 50%;
   width: 600px;
   transform: translateY(-50%);
-  z-index: 0;
+  z-index: 1;   /* CHANGE from 0 → -1 */
   pointer-events: none;
   filter: drop-shadow(0 0 15px rgba(255, 204, 0, 0.3));
 }
@@ -183,6 +185,12 @@ a.button:hover {
   transform: translateY(-50%) perspective(1000px) rotateY(-15deg);
 }
 
+  header, section, footer {
+  position: relative;
+  z-index: 2;
+}
+
+  
 @media (max-width: 768px) {
   .bg-product {
     display: none;
