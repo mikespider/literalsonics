@@ -9,17 +9,16 @@
 body {
   margin: 0;
   font-family: 'Helvetica Neue', Arial, sans-serif;
-  color: #f4f4f4;
+  color: #eaeaea;
   background: #0d0d0d;
-  line-height: 1.7;
+  line-height: 1.8;
 }
 
-/* NAVBAR */
+/* NAV */
 nav {
   position: sticky;
   top: 0;
-  background: rgba(0,0,0,0.85);
-  backdrop-filter: blur(8px);
+  background: rgba(0,0,0,0.9);
   display: flex;
   justify-content: center;
   gap: 2rem;
@@ -29,51 +28,44 @@ nav {
 nav a {
   color: #aaa;
   text-decoration: none;
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  transition: 0.3s;
 }
-nav a:hover { color: #ffcc00; }
-nav a.active { background: #ffcc00; color: #111; }
+nav a.active {
+  color: #ffcc00;
+}
 
 /* HEADER */
 header {
-  background: linear-gradient(135deg, #111, #222);
-  padding: 5rem 2rem;
-  text-align: center;
   position: relative;
+  padding: 6rem 2rem 5rem;
+  text-align: center;
   overflow: hidden;
+  border-bottom: 1px solid #222;
 }
 
 header h1 {
   font-size: 3rem;
   margin: 0;
-  position: relative;
   z-index: 2;
+  position: relative;
 }
 
 .subtitle {
-  font-size: 1.2rem;
-  margin-top: 2rem;
   max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-  opacity: 0.85;
+  margin: 2rem auto 0;
+  opacity: 0.8;
   position: relative;
   z-index: 2;
 }
 
-/* WAVE ANIMATION */
+/* WAVE */
 .wave-container {
   position: absolute;
-  top: 60%;
+  top: 65%;
   left: 50%;
   width: 200%;
   height: 80px;
   transform: translate(-50%, -50%);
   z-index: 1;
-  pointer-events: none;
 }
 
 .wave {
@@ -87,108 +79,74 @@ header h1 {
     transparent 2px,
     transparent 6px
   );
-  opacity: 0.6;
 }
 
-.wave-left {
-  left: 0;
-  animation: moveLeft 4s linear infinite;
-}
+.wave-left { animation: moveLeft 4s linear infinite; }
+.wave-right { right: 0; animation: moveRight 4s linear infinite; }
 
-.wave-right {
-  right: 0;
-  animation: moveRight 4s linear infinite;
-}
-
-@keyframes moveLeft {
-  100% { transform: translateX(-100%); }
-}
-
-@keyframes moveRight {
-  100% { transform: translateX(100%); }
-}
-
-.wave-sine {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 200%;
-  height: 100%;
-  transform: translateX(-50%);
-}
-
-.wave-sine rect {
-  animation: sineMove 5s linear infinite;
-}
-
-@keyframes sineMove {
-  100% { transform: translateX(-100px); }
-}
+@keyframes moveLeft { 100% { transform: translateX(-100%);} }
+@keyframes moveRight { 100% { transform: translateX(100%);} }
 
 /* SECTIONS */
-.product-section {
-  padding: 5rem 2rem;
+.section {
+  padding: 6rem 2rem;
+  border-bottom: 1px solid #1a1a1a;
 }
 
-.product-section:nth-child(even) {
+.section:nth-child(even) {
   background: #111;
 }
 
-.product-container {
-  max-width: 900px;
+.container {
+  max-width: 800px;
   margin: auto;
 }
 
-/* TITLES */
-.product-container h2 {
+/* TYPOGRAPHY */
+h2 {
   text-align: center;
   color: #ffcc00;
   margin-bottom: 2rem;
-  font-size: 2rem;
 }
 
-.product-container h3 {
+h3 {
   margin-top: 2rem;
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
   color: #fff;
 }
 
-/* TEXT */
-.product-container p {
-  color: #ddd;
-  margin-bottom: 1rem;
+p {
+  margin-bottom: 1.2rem;
+  color: #ccc;
 }
 
-/* IMAGE */
-.product-container img {
-  width: 100%;
-  max-width: 650px;
+/* MEDIA */
+img {
   display: block;
   margin: 2rem auto;
-  border-radius: 12px;
+  max-width: 600px;
+  width: 100%;
+  border-radius: 10px;
 }
 
-/* VIDEO */
 .video {
   display: flex;
   justify-content: center;
-  margin: 2rem 0;
+  margin: 3rem 0;
 }
-.video iframe {
+
+iframe {
   width: 100%;
-  max-width: 750px;
-  height: 420px;
-  border-radius: 12px;
+  max-width: 720px;
+  height: 400px;
+  border-radius: 10px;
   border: none;
 }
 
 /* FOOTER */
 footer {
-  background: #000;
-  color: #777;
   text-align: center;
-  padding: 2rem;
+  padding: 3rem;
+  color: #666;
 }
 </style>
 </head>
@@ -199,44 +157,46 @@ footer {
   <a href="index.html">Home</a>
   <a href="#">Data Sonification</a>
   <a href="#">Aural Snapshots</a>
-  <a href="audio_software.html" class="active">Audio Software</a>
+  <a href="#" class="active">Audio Software</a>
 </nav>
 
 <header>
   <h1>Audio Software</h1>
 
-  <!-- WAVE ANIMATION -->
   <div class="wave-container">
     <div class="wave wave-left"></div>
     <div class="wave wave-right"></div>
-
-    <svg class="wave-sine" viewBox="0 0 2000 40" preserveAspectRatio="none">
-      <defs>
-        <pattern id="sinePattern" width="100" height="40" patternUnits="userSpaceOnUse">
-          <path d="M0,20 Q25,0 50,20 T100,20"
-                stroke="rgba(255,204,0,0.6)"
-                stroke-width="2"
-                fill="none"/>
-        </pattern>
-      </defs>
-      <rect width="2000" height="40" fill="url(#sinePattern)" />
-    </svg>
   </div>
 
   <p class="subtitle">
-    Tools designed to explore, translate, and shape data into sound.
+    Tools designed to translate structured systems, natural phenomena, and data into sound.
   </p>
 </header>
 
 <!-- PRODUCT 1 -->
-<section class="product-section">
-<div class="product-container">
+<section class="section">
+<div class="container">
 
 <h2>Magnetic Field → Sound</h2>
+
 <img src="product1.png">
 
 <p>
-Magnetic Field → Sound translates real-time geomagnetic activity into sound using live planetary data.
+Magnetic Field → Sound is a real-time sonification instrument that transforms geomagnetic activity into dynamic audio. Using live data from Earth's magnetosphere, the system converts fluctuations in magnetic intensity into continuously evolving sound structures.
+</p>
+
+<p>
+Rather than simulating motion, the plugin listens directly to planetary-scale processes, translating invisible environmental changes into audible phenomena.
+</p>
+
+<h3>Sound Engine</h3>
+<p>
+Magnetic field values are mapped to oscillator frequency, amplitude, and modulation depth. Sudden spikes in geomagnetic activity create bursts of harmonic tension, while stable periods produce slow, drifting textures.
+</p>
+
+<h3>Applications</h3>
+<p>
+Ambient composition, scientific sonification, installation work, and experimental performance.
 </p>
 
 <div class="video">
@@ -247,14 +207,44 @@ Magnetic Field → Sound translates real-time geomagnetic activity into sound us
 </section>
 
 <!-- PRODUCT 2 -->
-<section class="product-section">
-<div class="product-container">
+<section class="section">
+<div class="container">
 
 <h2>Whale Migration Sonifier</h2>
+
 <img src="product2.png">
 
 <p>
-Transforms whale migration data into evolving soundscapes.
+Whale Migration Sonifier is an advanced audio plugin that converts real scientific whale migration data into dynamic, evolving soundscapes. By mapping latitude and longitude from tracked whales across the globe, the plugin transforms natural movement into expressive musical structures.
+</p>
+
+<p>
+At its core, the system turns real-world data into modulation — allowing you to hear migration patterns as sound.
+</p>
+
+<h3>Sound Engine</h3>
+<p>
+A root oscillator defines the tonal center. Additional oscillators map latitude and longitude into continuously shifting pitch, creating a living composition driven entirely by whale movement.
+</p>
+
+<h3>Scale Quantizer</h3>
+<p>
+Switch between raw chromatic mapping or constrain output to musical scales. This allows a balance between scientific accuracy and harmonic control.
+</p>
+
+<h3>Dataset Control</h3>
+<p>
+Choose between short datasets (detailed motion) or long datasets (macro migration patterns). Playback speed lets you compress or stretch time.
+</p>
+
+<h3>Synthesis & Modulation</h3>
+<p>
+Multi-oscillator engine, filters, delay, reverb, ADSR envelopes, and LFO modulation targeting frequency, amplitude, and effects.
+</p>
+
+<h3>Applications</h3>
+<p>
+Ambient sound design, data-driven composition, scientific exploration.
 </p>
 
 <div class="video">
@@ -265,14 +255,44 @@ Transforms whale migration data into evolving soundscapes.
 </section>
 
 <!-- PRODUCT 3 -->
-<section class="product-section">
-<div class="product-container">
+<section class="section">
+<div class="container">
 
 <h2>Morse Code Sonifier</h2>
+
 <img src="product3.png">
 
 <p>
-Converts text into rhythmic sonic structures using Morse code.
+The Morse Code Sonifier transforms written text into sound through structured signal mapping. It converts characters into Morse code, then uses those patterns to trigger a multi-voice synthesis engine.
+</p>
+
+<p>
+Rather than playing simple tones, it interprets language as rhythm and temporal structure.
+</p>
+
+<h3>How It Works</h3>
+<p>
+Dots and dashes act as trigger signals activating envelopes and modulation. Short text produces percussive rhythms, while longer passages generate evolving textures.
+</p>
+
+<h3>Multi-Voice Engine</h3>
+<p>
+Each oscillator operates independently with waveform selection, ADSR, and routing. This enables minimal pulses or dense harmonic layers.
+</p>
+
+<h3>Modulation</h3>
+<p>
+LFO system with multiple waveforms, tempo sync, and scale quantization for harmonic control.
+</p>
+
+<h3>Effects</h3>
+<p>
+Reverb, delay, and stereo shaping create spatial depth and cinematic textures.
+</p>
+
+<h3>Concept</h3>
+<p>
+Sits at the intersection of communication systems, algorithmic composition, and modular synthesis.
 </p>
 
 <div class="video">
@@ -283,7 +303,7 @@ Converts text into rhythmic sonic structures using Morse code.
 </section>
 
 <footer>
-<p>&copy; 2025 Literal Sonics</p>
+<p>© 2025 Literal Sonics</p>
 </footer>
 
 </body>
