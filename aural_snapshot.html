@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aural Snapshots | Literal Sonics</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background: #0b0b0b;
+  color: #eaeaea;
+  line-height: 1.7;
+}
+
+/* NAV */
+nav {
+  position: sticky;
+  top: 0;
+  background: rgba(0,0,0,0.9);
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem;
+  z-index: 10;
+}
+nav a {
+  color: #aaa;
+  text-decoration: none;
+}
+nav a.active {
+  color: #ffcc00;
+}
+
+/* HEADER */
+header {
+  padding: 7rem 2rem 6rem;
+  text-align: center;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+header h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.subtitle {
+  max-width: 650px;
+  margin: 2rem auto 0;
+  opacity: 0.75;
+}
+
+/* INTRO */
+.intro {
+  padding: 5rem 2rem;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.intro p {
+  font-size: 1.1rem;
+  color: #ccc;
+}
+
+/* GRID */
+.snapshots {
+  padding: 4rem 2rem 6rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* CARD */
+.card {
+  background: #111;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: 0.3s;
+  border: 1px solid #1a1a1a;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: #333;
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+.card h3 {
+  margin: 0 0 0.5rem;
+  color: #ffcc00;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #bbb;
+}
+
+/* PLAYER */
+.audio {
+  margin-top: 1rem;
+}
+
+audio {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+  border-top: 1px solid #1a1a1a;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="#">Data Sonification</a>
+  <a href="aural_snapshot.html" class="active">Aural Snapshots</a>
+  <a href="audio_software.html">Audio Software</a>
+</nav>
+
+<header>
+  <h1>Aural Snapshots</h1>
+  <p class="subtitle">
+    Capturing the sonic essence of a moment in time or a physical location.
+  </p>
+</header>
+
+<section class="intro">
+<div class="container">
+
+<p>
+Aural Snapshots are short sonic documents — fragments of time translated into sound. 
+Each piece captures the acoustic identity of a place, an event, or a fleeting moment, preserving it not as a recording alone, but as an interpreted sonic structure.
+</p>
+
+<p>
+Rather than reproducing reality, these works reshape it. Environmental sound, spatial resonance, and temporal patterns are distilled into compositions that sit between field recording, sound design, and abstraction.
+</p>
+
+<p>
+Every snapshot is both a document and a transformation — a way of hearing space differently.
+</p>
+
+</div>
+</section>
+
+<section class="snapshots">
+<div class="grid">
+
+<!-- SNAPSHOT 1 -->
+<div class="card">
+  <img src="snapshot1.jpg">
+  <div class="card-content">
+    <h3>Coastal Drift</h3>
+    <p>
+      A study of tidal motion and wind interaction along a coastal edge.
+    </p>
+    <div class="audio">
+      <audio controls>
+        <source src="audio1.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+  </div>
+</div>
+
+<!-- SNAPSHOT 2 -->
+<div class="card">
+  <img src="snapshot2.jpg">
+  <div class="card-content">
+    <h3>Urban Pulse</h3>
+    <p>
+      Rhythmic structures extracted from city movement and traffic flow.
+    </p>
+    <div class="audio">
+      <audio controls>
+        <source src="audio2.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+  </div>
+</div>
+
+<!-- SNAPSHOT 3 -->
+<div class="card">
+  <img src="snapshot3.jpg">
+  <div class="card-content">
+    <h3>Forest Resonance</h3>
+    <p>
+      Layered textures derived from wind, leaves, and spatial depth in woodland.
+    </p>
+    <div class="audio">
+      <audio controls>
+        <source src="audio3.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+  </div>
+</div>
+
+</div>
+</section>
+
+<footer>
+<p>© 2025 Literal Sonics</p>
+</footer>
+
+</body>
+</html>
