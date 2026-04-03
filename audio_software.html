@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Audio Software | Literal Sonics</title>
+
 <style>
 body {
   margin: 0;
@@ -11,7 +12,6 @@ body {
   color: #f4f4f4;
   background: linear-gradient(135deg, #0d0d0d, #1a1a2e);
   line-height: 1.6;
-  overflow-x: hidden;
 }
 
 /* NAVBAR */
@@ -40,127 +40,237 @@ nav a.active { background: #ffcc00; color: #111; }
 /* HEADER */
 header {
   background: linear-gradient(135deg, #111, #222);
-  color: #fff;
   padding: 5rem 2rem;
   text-align: center;
-  position: relative;
-  overflow: hidden;
 }
 header h1 { font-size: 3rem; margin: 0; }
+
 .subtitle {
   font-size: 1.2rem;
   margin-top: 2rem;
-  opacity: 0.9;
-  text-align: center;
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
+  opacity: 0.9;
 }
-
-/* WAVES */
-.wave-container {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  width: 200%;
-  height: 80px;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-}
-.wave { position: absolute; width: 50%; height: 100%; background: repeating-linear-gradient(90deg, rgba(255,204,0,0.5), rgba(255,204,0,0.5) 2px, transparent 2px, transparent 6px); opacity: 0.6; }
-.wave-left { left: 0; animation: moveLeft 3s linear infinite; }
-.wave-right { right: 0; animation: moveRight 3s linear infinite; }
-@keyframes moveLeft { 100% { transform: translateX(-100%); } }
-@keyframes moveRight { 100% { transform: translateX(100%); } }
-.wave-sine { position: absolute; top: 0; left: 50%; width: 200%; height: 100%; transform: translateX(-50%); }
-.wave-sine rect { animation: sineMove 4s linear infinite; }
-@keyframes sineMove { 100% { transform: translateX(-100px); } }
 
 /* CONTENT */
-section { padding: 3rem 2rem; max-width: 900px; margin: auto; position: relative; z-index: 2; text-align: left; }
-section h2 { text-align: center; color: #ffcc00; margin-bottom: 1.5rem; }
-.product {
-  background: rgba(255,255,255,0.05);
-  border-radius: 16px;
-  padding: 2rem;
-  margin-bottom: 3rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+section {
+  padding: 3rem 2rem;
+  max-width: 900px;
+  margin: auto;
 }
-.product img { width: 100%; max-width: 600px; border-radius: 12px; align-self: center; }
-.product iframe { width: 100%; height: 315px; border: none; border-radius: 12px; align-self: center; }
+section h2 {
+  text-align: center;
+  color: #ffcc00;
+  margin-bottom: 2rem;
+}
+section p {
+  color: #ddd;
+  line-height: 1.8;
+}
+
+/* PRODUCT */
+.product {
+  margin-bottom: 4rem;
+}
+
+.product img {
+  width: 100%;
+  max-width: 600px;
+  display: block;
+  margin: 2rem auto;
+  border-radius: 12px;
+}
+
+.video {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+.video iframe {
+  width: 100%;
+  max-width: 700px;
+  height: 400px;
+  border: none;
+  border-radius: 12px;
+}
 
 /* FOOTER */
-footer { background: #000; color: #aaa; text-align: center; padding: 2rem; }
-
-@media (max-width: 768px) {
-  .product { padding: 1rem; }
-  .product img, .product iframe { width: 100%; height: auto; }
+footer {
+  background: #000;
+  color: #aaa;
+  text-align: center;
+  padding: 2rem;
 }
 </style>
 </head>
+
 <body>
 
-<!-- NAVBAR -->
 <nav>
   <a href="index.html">Home</a>
-  <a href="data_sonification.html">Data Sonification</a>
+  <a href="#">Data Sonification</a>
   <a href="#">Aural Snapshots</a>
-  <!-- <a href="#">Sound Landscapes</a> -->
+  <a href="#">Sound Landscapes</a>
   <a href="audio_software.html" class="active">Audio Software</a>
 </nav>
 
-<!-- HEADER -->
 <header>
   <h1>Audio Software</h1>
-  <div class="wave-container">
-    <div class="wave wave-left"></div>
-    <div class="wave wave-right"></div>
-    <svg class="wave-sine" viewBox="0 0 2000 40" preserveAspectRatio="none">
-      <defs>
-        <pattern id="sinePattern" width="100" height="40" patternUnits="userSpaceOnUse">
-          <path d="M0,20 Q25,0 50,20 T100,20" stroke="rgba(200,200,200,0.5)" stroke-width="2" fill="none"/>
-        </pattern>
-      </defs>
-      <rect width="2000" height="40" fill="url(#sinePattern)" />
-    </svg>
-  </div>
-  <p class="subtitle">Tools designed to explore, translate, and shape data into sound.</p>
+  <p class="subtitle">
+    Tools designed to explore, translate, and shape data into sound.
+  </p>
 </header>
 
-<!-- PRODUCTS -->
 <section>
-  <h2>Our Software</h2>
 
-  <!-- Product 1 -->
-  <div class="product">
-    <h3>Magnetic Field → Sound</h3>
-    <img src="product1.png" alt="Magnetic Field → Sound">
-    <p>
-      An experimental sonification tool that translates real-time geomagnetic activity into an evolving audio experience.
-      Built around live data from the NOAA Space Weather Prediction Center, it uses the planetary K-index (Kp) to drive a multi-voice synthesizer.
-      Instead of graphs, the application renders data as sound for intuitive listening.
-    </p>
-    <iframe src="https://www.youtube.com/embed/MLYgv2KYmkQ" allowfullscreen></iframe>
-  </div>
+<!-- PRODUCT 1 -->
+<div class="product">
+<h2>Magnetic Field → Sound</h2>
 
-  <!-- Product 2 -->
-  <div class="product">
-    <h3>Whale Migration Sonifier</h3>
-    <img src="product2.png" alt="Whale Migration Sonifier">
-    <p>
-      Converts real whale migration data into dynamic, evolving soundscapes. Latitude and longitude are mapped to pitch, producing a living composition.
-      Features multi-oscillator synthesis, filter, delay, reverb, LFO modulation, and scale quantizer for scientific or musical exploration.
-    </p>
-    <iframe src="https://www.youtube.com/embed/nNelqLLLhKg" allowfullscreen></iframe>
-  </div>
+<img src="product1.jpg" alt="Magnetic Field Sonifier">
+
+<p>
+Magnetic Field → Sound is an experimental sonification tool that translates real-time geomagnetic activity into an evolving audio experience. Built around live data from the NOAA Space Weather Prediction Center, the system uses the planetary K-index (Kp)—a global measure of disturbances in Earth’s magnetic field—to drive a multi-voice synthesizer.
+</p>
+
+<p>
+Rather than visualizing the data through graphs, the application renders it as sound, allowing users to perceive geomagnetic dynamics through listening.
+</p>
+
+<p>
+The core of the system is a three-voice structure:
+</p>
+
+<p>
+The first voice maps geomagnetic intensity (Kp) to pitch, while changes in the index influence amplitude, creating a stable tonal layer.
+</p>
+
+<p>
+The second voice inverts this relationship, emphasizing fluctuations and instability.
+</p>
+
+<p>
+The third voice introduces additional motion and contrast, enriching the sonic texture.
+</p>
+
+<p>
+Together, these voices create a dynamic interplay between stability and change. Quiet geomagnetic periods produce restrained tones, while disturbances generate complex and evolving sonic behavior.
+</p>
+
+<p>
+The interface allows waveform selection, octave control, volume shaping, and inter-voice modulation, turning scientific data into a playable instrument.
+</p>
+
+<p>
+This project explores perception over visualization, transforming invisible planetary forces into an audible experience.
+</p>
+
+<div class="video">
+<iframe src="https://www.youtube.com/embed/MLYgv2KYmkQ" allowfullscreen></iframe>
+</div>
+
+</div>
+
+<!-- PRODUCT 2 -->
+<div class="product">
+<h2>Whale Migration Sonifier</h2>
+
+<img src="product2.jpg" alt="Whale Sonifier">
+
+<p>
+Whale Migration Sonifier is an advanced audio plugin that converts real scientific whale migration data into dynamic, evolving soundscapes. By mapping latitude and longitude from tracked whales across the globe, the plugin transforms natural movement into expressive musical structures.
+</p>
+
+<p>
+At its core, the system turns real-world data into modulation — allowing you to hear migration patterns as sound.
+</p>
+
+<p><strong>🎛️ Sound Engine</strong></p>
+<p>
+A root oscillator defines the tonal center, while additional oscillators map latitude and longitude into continuously shifting pitch. The result is a living composition driven entirely by real whale movement.
+</p>
+
+<p><strong>🎚️ Scale Quantizer & Musical Control</strong></p>
+<p>
+Switch between raw chromatic mapping or constrain output to musical scales. Select tonal centers and scale types to balance scientific accuracy with musicality.
+</p>
+
+<p><strong>🌍 Dataset Control</strong></p>
+<p>
+Explore short datasets for detail or long datasets for large-scale migration patterns. Playback speed allows real-time time compression or expansion.
+</p>
+
+<p><strong>🔊 Synthesis & Modulation</strong></p>
+<p>
+Multi-oscillator engine, filters, delay, reverb, ADSR envelopes, and LFO modulation with assignable targets enable deep sound design control.
+</p>
+
+<p>
+Every sound is derived from real whale tracking data, revealing hidden structures in migration behavior.
+</p>
+
+<p><strong>🎧 Applications</strong></p>
+<p>
+Ambient composition, cinematic sound design, experimental music, and scientific exploration.
+</p>
+
+<div class="video">
+<iframe src="https://www.youtube.com/embed/nNelqLLLhKg" allowfullscreen></iframe>
+</div>
+
+</div>
+
+<!-- PRODUCT 3 -->
+<div class="product">
+<h2>Morse Code Sonifier</h2>
+
+<img src="product3.jpg" alt="Morse Code Sonifier">
+
+<p>
+Morse Code Sonifier is a text-to-sound instrument that transforms written language into structured sonic patterns. It converts text into Morse code and uses these signals to drive a multi-voice synthesis engine.
+</p>
+
+<p>
+Rather than simple tones, it interprets text as rhythm and time, creating evolving textures from communication itself.
+</p>
+
+<p><strong>How It Works</strong></p>
+<p>
+Characters are translated into dots and dashes, triggering oscillators and envelopes. Short phrases create rhythmic pulses, while longer texts generate complex soundscapes.
+</p>
+
+<p><strong>Multi-Voice Engine</strong></p>
+<p>
+Each oscillator features waveform selection, ADSR envelopes, and independent control, enabling rich layering.
+</p>
+
+<p><strong>Advanced Modulation</strong></p>
+<p>
+Flexible LFO system with tempo sync, scale quantization, and per-voice routing allows deep modulation and harmonic coherence.
+</p>
+
+<p><strong>Effects</strong></p>
+<p>
+Reverb, delay, and stereo shaping transform signal patterns into immersive environments.
+</p>
+
+<p><strong>Concept</strong></p>
+<p>
+This instrument bridges communication systems, algorithmic music, and modular synthesis — turning encoded information into expressive sound.
+</p>
+
+<p>
+It is not just a synthesizer, but a translation engine where meaning becomes rhythm, and rhythm becomes music.
+</p>
+
+</div>
 
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <p>&copy; 2025 Literal Sonics</p>
+<p>&copy; 2025 Literal Sonics</p>
 </footer>
 
 </body>
