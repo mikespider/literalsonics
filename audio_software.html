@@ -14,24 +14,28 @@ body {
   line-height: 1.8;
 }
 
-/* NAV */
+/* NAVBAR */
 nav {
   position: sticky;
   top: 0;
-  background: rgba(0,0,0,0.9);
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(8px);
   display: flex;
   justify-content: center;
   gap: 2rem;
   padding: 1rem;
-  z-index: 10;
+  z-index: 5;
 }
 nav a {
   color: #aaa;
   text-decoration: none;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  transition: 0.3s;
 }
-nav a.active {
-  color: #ffcc00;
-}
+nav a:hover { color: #ffcc00; }
+nav a.active { background: #ffcc00; color: #111; }
 
 /* HEADER */
 header {
