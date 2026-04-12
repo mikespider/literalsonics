@@ -103,20 +103,15 @@ header p {
 
   background: linear-gradient(
     to right,
-    transparent 0%,
-    rgba(180, 220, 255, 0.3) 35%,
-    rgba(255, 255, 255, 0.95) 50%,  /* bright metallic core */
-    rgba(180, 220, 255, 0.4) 65%,
-    transparent 100%
+    transparent,
+    rgba(77,166,255,0.9),
+    transparent
   );
 
-  /* metallic glow layers */
-  box-shadow:
-    0 0 6px rgba(120,180,255,0.6),
-    0 0 12px rgba(77,166,255,0.4);
+  filter: drop-shadow(0 0 8px rgba(77,166,255,0.6));
 
-  animation: pulseMove 5s linear infinite;
-  opacity: 0;
+  animation: pulseMove 6s linear infinite;
+  opacity: 0; /* controlled by animation */
 }
 
 
