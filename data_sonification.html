@@ -39,12 +39,26 @@ nav a.active { background: #ffcc00; color: #111; }
 
 /* HEADER */
 header {
-  background: linear-gradient(135deg, #111, #222);
+  background:
+    radial-gradient(
+      circle at 50% 120%,   /* vanishing point (below center) */
+      rgba(77,166,255,0.25) 0%,
+      rgba(77,166,255,0.12) 25%,
+      rgba(10,10,20,0.9) 60%,
+      #0d0d0d 100%
+    ),
+    linear-gradient(
+      135deg,
+      #0d0d0d,
+      #1a1a2e
+    );
+
   color: #fff;
   padding: 5rem 2rem;
   text-align: center;
   position: relative;
   overflow: hidden;
+  z-index: 2;
 }
 header h1 { font-size: 3rem; margin: 0; }
 .subtitle {
@@ -58,42 +72,92 @@ header h1 { font-size: 3rem; margin: 0; }
 }
 
 /* WAVES */
+/* Top waves container */
 .wave-container {
   position: absolute;
-  top: 60%;
-  left: 50%;
-  width: 200%;
-  height: 80px;
-  transform: translate(-50%, -50%);
+  inset: 0;
   z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
 }
-.wave { position: absolute; width: 50%; height: 100%; background: repeating-linear-gradient(90deg, rgba(255,204,0,0.5), rgba(255,204,0,0.5) 2px, transparent 2px, transparent 6px); opacity: 0.6; }
-.wave-left { left: 0; animation: moveLeft 3s linear infinite; }
-.wave-right { right: 0; animation: moveRight 3s linear infinite; }
-@keyframes moveLeft { 100% { transform: translateX(-100%); } }
-@keyframes moveRight { 100% { transform: translateX(100%); } }
-.wave-sine { position: absolute; top: 0; left: 50%; width: 200%; height: 100%; transform: translateX(-50%); }
-.wave-sine rect { animation: sineMove 4s linear infinite; }
-@keyframes sineMove { 100% { transform: translateX(-100px); } }
 
-/* CONTENT */
-section { padding: 3rem 2rem; max-width: 900px; margin: auto; position: relative; z-index: 2; text-align: left; }
-section h2 { text-align: center; color: #ffcc00; margin-bottom: 1.5rem; }
-section p { text-align: left; line-height: 1.8; color: #ddd; margin-bottom: 1rem; }
+/* ===== GRID (data field) ===== */
+.wave-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
 
-/* EMBEDDED AUDIO */
-.audio-embed {
-  margin: 2rem auto;
-  display: flex;
-  justify-content: center;
+  background:
+    repeating-linear-gradient(
+      to right,
+      rgba(77,166,255,0.08),
+      rgba(77,166,255,0.08) 1px,
+      transparent 1px,
+      transparent 60px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(77,166,255,0.06),
+      rgba(77,166,255,0.06) 1px,
+      transparent 1px,
+      transparent 60px
+    );
+
+  transform: perspective(800px) rotateX(65deg) scale(1.5);
+  transform-origin: top;
+
+  opacity: 0.5;
 }
-.audio-embed iframe {
-  width: 100%;
-  max-width: 700px;
-  height: 166px;
-  border: none;
-  border-radius: 12px;
+
+/* ===== SIGNAL PULSE ===== */
+.wave-container::after {
+  content: "";
+  position: absolute;
+  top: 60%;
+  left: -50%;
+  width: 200%;
+  height: 2px;
+
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(77,166,255,0.9),
+    transparent
+  );
+
+  filter: drop-shadow(0 0 8px rgba(77,166,255,0.6));
+
+  animation: pulseMove 6s linear infinite;
+  opacity: 0; /* controlled by animation */
 }
+
+
+/* smoother loop with fade in/out */
+@keyframes pulseMove {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+
+  5% {
+    opacity: 1; /* appears sooner */
+  }
+
+  45% {
+    transform: translateX(50%);
+    opacity: 1;
+  }
+
+  75% {
+    opacity: 0; /* fades out earlier */
+  }
+
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
 
 /* FOOTER */
 footer { background: #000; color: #aaa; text-align: center; padding: 2rem; }
