@@ -47,6 +47,17 @@ header {
   text-align: center;
   padding: 5rem 2rem;
   color: #fff;
+
+  /* FIXED: brighter + more atmospheric */
+  background:
+    radial-gradient(
+      circle at 50% 120%,
+      rgba(77,166,255,0.35) 0%,
+      rgba(77,166,255,0.18) 25%,
+      rgba(20,20,40,0.85) 60%,
+      #0d0d0d 100%
+    ),
+    linear-gradient(135deg, #0f0f14, #1a1a2e);
 }
 
 /* TITLE */
@@ -57,7 +68,7 @@ header h1 {
   z-index: 2;
 }
 
-/* WAVE BACKGROUND */
+/* WAVE */
 .wave-container {
   position: absolute;
   inset: 0;
@@ -88,7 +99,7 @@ header h1 {
 
   transform: perspective(800px) rotateX(65deg) scale(1.5);
   transform-origin: top;
-  opacity: 0.5;
+  opacity: 0.35; /* softened */
 }
 
 .wave-container::after {
@@ -106,7 +117,7 @@ header h1 {
     transparent
   );
 
-  filter: drop-shadow(0 0 8px rgba(77,166,255,0.6));
+  filter: drop-shadow(0 0 6px rgba(77,166,255,0.45));
   animation: pulseMove 6s linear infinite;
   opacity: 0;
 }
@@ -119,7 +130,7 @@ header h1 {
   100% { transform: translateX(100%); opacity: 0; }
 }
 
-/* SUBTITLE (NOW PROPERLY BELOW WAVE) */
+/* SUBTITLE (correct placement under wave) */
 .subtitle {
   position: relative;
   z-index: 2;
@@ -211,11 +222,11 @@ footer {
     <h2>Exploring Data Through Sound</h2>
 
     <p>
-      Data Sonification is the practice of translating information into auditory experiences, enabling us to perceive patterns, trends, and relationships through listening rather than visual inspection. At Literal Sonics, we map datasets into musical parameters such as pitch, rhythm, amplitude, and timbre.
+      Data Sonification translates numerical structures into sound, allowing patterns and relationships to be perceived through listening rather than sight.
     </p>
 
     <p>
-      This approach reveals structure that is often hidden in visual formats, turning data into something experiential rather than abstract.
+      It transforms datasets into musical parameters such as pitch, rhythm, amplitude, and timbre.
     </p>
 
   </div>
@@ -228,11 +239,11 @@ footer {
     <h2>Planetary Distances in Sound</h2>
 
     <p>
-      One of our compositions maps planetary distances into frequency relationships, creating a harmonic model of the solar system.
+      This composition maps planetary distances into frequency relationships, forming an audible model of the solar system.
     </p>
 
     <p>
-      Inner planets produce higher tones, while outer planets generate deeper resonances.
+      Inner planets produce higher tones while outer planets generate deeper resonances.
     </p>
 
     <div class="audio-embed">
