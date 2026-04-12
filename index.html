@@ -58,79 +58,66 @@ header p {
 /* Top waves container */
 .wave-container {
   position: absolute;
-  top: 60%;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  overflow: hidden;
+  inset: 0;
   z-index: 1;
-
+  overflow: hidden;
   pointer-events: none;
-
-  transform: translateZ(0);
-  will-change: transform;
 }
 
-/* SVG container */
-.audio-field {
-  width: 200%;
-  height: 100%;
-}
+/* ===== GRID (data field) ===== */
+.wave-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
 
-/* Group animation (main motion) */
-.wave-group {
-  animation: flow 10s linear infinite;
-}
+  background:
+    repeating-linear-gradient(
+      to right,
+      rgba(77,166,255,0.08),
+      rgba(77,166,255,0.08) 1px,
+      transparent 1px,
+      transparent 60px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(77,166,255,0.06),
+      rgba(77,166,255,0.06) 1px,
+      transparent 1px,
+      transparent 60px
+    );
 
-/* Individual lines */
-.audio-field path {
-  fill: none;
-  stroke: #4da6ff;
-  stroke-width: 1.5;
-  opacity: 0.75;
+  transform: perspective(800px) rotateX(65deg) scale(1.5);
+  transform-origin: top;
 
-  /* sharper, less “soft water” */
-  filter: none;
-}
-
-/* Slight variation per line */
-.audio-field path:nth-child(1) {
   opacity: 0.5;
-  animation: drift1 6s ease-in-out infinite alternate;
 }
 
-.audio-field path:nth-child(2) {
-  opacity: 0.8;
-  animation: drift2 7s ease-in-out infinite alternate;
+/* ===== SIGNAL PULSE ===== */
+.wave-container::after {
+  content: "";
+  position: absolute;
+  top: 60%;
+  left: -50%;
+  width: 200%;
+  height: 2px;
+
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(77,166,255,0.8),
+    transparent
+  );
+
+  filter: drop-shadow(0 0 8px rgba(77,166,255,0.6));
+
+  animation: pulseMove 6s linear infinite;
 }
 
-.audio-field path:nth-child(3) {
-  opacity: 0.4;
-  animation: drift3 5s ease-in-out infinite alternate;
-}
-
-/* Horizontal flow */
-@keyframes flow {
+/* smooth horizontal motion */
+@keyframes pulseMove {
   from { transform: translateX(0); }
-  to   { transform: translateX(-200px); }
+  to   { transform: translateX(50%); }
 }
-
-/* Subtle vertical “breathing” */
-@keyframes drift1 {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-4px); }
-}
-
-@keyframes drift2 {
-  from { transform: translateY(0); }
-  to   { transform: translateY(3px); }
-}
-
-@keyframes drift3 {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-2px); }
-}
-
 
 
 
@@ -271,13 +258,7 @@ a.button:hover {
       <rect width="2000" height="40" fill="url(#sinePattern)" />
     </svg> -->
 
-<svg class="audio-field" viewBox="0 0 1200 120" preserveAspectRatio="none">
-  <g class="wave-group">
-    <path d="M0,60 L80,40 L160,70 L240,50 L320,65 L400,45 L480,60 L560,50 L640,70 L720,40 L800,60 L880,55 L960,65 L1040,45 L1120,60 L1200,50" />
-    <path d="M0,65 L80,55 L160,75 L240,60 L320,70 L400,55 L480,65 L560,60 L640,75 L720,50 L800,65 L880,60 L960,70 L1040,55 L1120,65 L1200,60" />
-    <path d="M0,55 L80,35 L160,65 L240,45 L320,60 L400,40 L480,55 L560,45 L640,65 L720,35 L800,55 L880,50 L960,60 L1040,40 L1120,55 L1200,45" />
-  </g>
-</svg>
+
 
 
   </div>
