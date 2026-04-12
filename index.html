@@ -87,9 +87,10 @@ header p {
   fill: none;
   stroke: #4da6ff;
   stroke-width: 1.5;
-  opacity: 0.7;
+  opacity: 0.75;
 
-  filter: drop-shadow(0 0 6px rgba(77,166,255,0.4));
+  /* sharper, less “soft water” */
+  filter: none;
 }
 
 /* Slight variation per line */
@@ -270,13 +271,14 @@ a.button:hover {
       <rect width="2000" height="40" fill="url(#sinePattern)" />
     </svg> -->
 
-   <svg class="audio-field" viewBox="0 0 1200 120" preserveAspectRatio="none">
+<svg class="audio-field" viewBox="0 0 1200 120" preserveAspectRatio="none">
   <g class="wave-group">
-    <path d="M0,60 Q50,30 100,60 T200,60 T300,60 T400,60 T500,60 T600,60 T700,60 T800,60 T900,60 T1000,60 T1100,60 T1200,60" />
-    <path d="M0,65 Q50,40 100,65 T200,65 T300,65 T400,65 T500,65 T600,65 T700,65 T800,65 T900,65 T1000,65 T1100,65 T1200,65" />
-    <path d="M0,55 Q50,25 100,55 T200,55 T300,55 T400,55 T500,55 T600,55 T700,55 T800,55 T900,55 T1000,55 T1100,55 T1200,55" />
+    <path d="M0,60 L80,40 L160,70 L240,50 L320,65 L400,45 L480,60 L560,50 L640,70 L720,40 L800,60 L880,55 L960,65 L1040,45 L1120,60 L1200,50" />
+    <path d="M0,65 L80,55 L160,75 L240,60 L320,70 L400,55 L480,65 L560,60 L640,75 L720,50 L800,65 L880,60 L960,70 L1040,55 L1120,65 L1200,60" />
+    <path d="M0,55 L80,35 L160,65 L240,45 L320,60 L400,40 L480,55 L560,45 L640,65 L720,35 L800,55 L880,50 L960,60 L1040,40 L1120,55 L1200,45" />
   </g>
 </svg>
+
 
   </div>
 </header>
