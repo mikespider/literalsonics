@@ -45,52 +45,75 @@ header p {
 .wave-container {
   position: absolute;
   top: 60%;
-  left: 50%;
-  width: 200%;
-  height: 80px;
-  transform: translate(-50%, -50%);
+  left: 0;
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
   z-index: 1;
+
+  pointer-events: none;
+
+  transform: translateZ(0);
+  will-change: transform;
 }
 
-/* Yellow splitting waves */
-.wave {
-  position: absolute;
-  width: 50%;
+/* SVG container */
+.audio-field {
+  width: 200%;
   height: 100%;
-  background: repeating-linear-gradient(
-    90deg,
-    rgba(255,204,0,0.5),
-    rgba(255,204,0,0.5) 2px,
-    transparent 2px,
-    transparent 6px
-  );
-  opacity: 0.6;
 }
 
-.wave-left { left: 0; animation: moveLeft 3s linear infinite; }
-.wave-right { right: 0; animation: moveRight 3s linear infinite; }
-
-@keyframes moveLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
-@keyframes moveRight { 0% { transform: translateX(0); } 100% { transform: translateX(100%); } }
-
-/* Sine wave styling and smooth animation */
-.wave-sine {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 200%;   /* wider than viewport for smooth loop */
-  height: 100%;
-  transform: translateX(-50%);
-  z-index: 0;    /* under yellow waves */
+/* Group animation (main motion) */
+.wave-group {
+  animation: flow 10s linear infinite;
 }
 
-.wave-sine rect {
-  animation: sineMove 4s linear infinite;
+/* Individual lines */
+.audio-field path {
+  fill: none;
+  stroke: #4da6ff;
+  stroke-width: 1.5;
+  opacity: 0.7;
+
+  filter: drop-shadow(0 0 6px rgba(77,166,255,0.4));
 }
 
-@keyframes sineMove {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-100px); } /* slide by exactly one pattern width */
+/* Slight variation per line */
+.audio-field path:nth-child(1) {
+  opacity: 0.5;
+  animation: drift1 6s ease-in-out infinite alternate;
+}
+
+.audio-field path:nth-child(2) {
+  opacity: 0.8;
+  animation: drift2 7s ease-in-out infinite alternate;
+}
+
+.audio-field path:nth-child(3) {
+  opacity: 0.4;
+  animation: drift3 5s ease-in-out infinite alternate;
+}
+
+/* Horizontal flow */
+@keyframes flow {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-200px); }
+}
+
+/* Subtle vertical “breathing” */
+@keyframes drift1 {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-4px); }
+}
+
+@keyframes drift2 {
+  from { transform: translateY(0); }
+  to   { transform: translateY(3px); }
+}
+
+@keyframes drift3 {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-2px); }
 }
 
 
@@ -232,6 +255,15 @@ a.button:hover {
       </defs>
       <rect width="2000" height="40" fill="url(#sinePattern)" />
     </svg> -->
+
+   <svg class="audio-field" viewBox="0 0 1200 120" preserveAspectRatio="none">
+  <g class="wave-group">
+    <path d="M0,60 Q50,30 100,60 T200,60 T300,60 T400,60 T500,60 T600,60 T700,60 T800,60 T900,60 T1000,60 T1100,60 T1200,60" />
+    <path d="M0,65 Q50,40 100,65 T200,65 T300,65 T400,65 T500,65 T600,65 T700,65 T800,65 T900,65 T1000,65 T1100,65 T1200,65" />
+    <path d="M0,55 Q50,25 100,55 T200,55 T300,55 T400,55 T500,55 T600,55 T700,55 T800,55 T900,55 T1000,55 T1100,55 T1200,55" />
+  </g>
+</svg>
+
   </div>
 </header>
 
