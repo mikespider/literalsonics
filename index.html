@@ -55,6 +55,33 @@ header p {
   opacity: 0.9;
 }
 
+
+ /* NAV */
+nav {
+  position: sticky;
+  top: 0;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem;
+  z-index: 10;
+}
+
+nav a {
+  color: #aaa;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  transition: 0.3s;
+}
+
+nav a:hover { color: #ffcc00; }
+nav a.active { background: #ffcc00; color: #111; }
+
+
 /* Top waves container */
 .wave-container {
   position: absolute;
@@ -261,6 +288,12 @@ a.button:hover {
 <!-- Background products -->
 <!-- <img src="product1.png" alt="Product 1" class="bg-product bg-left">-->
 <!--<img src="product2.png" alt="Product 2" class="bg-product bg-right"> -->
+<nav>
+  <a href="#" class="active">Home</a>
+  <a href="data_sonification.html">Data Sonification</a>
+  <a href="audio_software.html" >Audio Software</a>
+   <a href="aural_snapshots.html">Aural Snapshots</a>
+</nav>
 
 <header>
   <h1>Literal Sonics </h1>
