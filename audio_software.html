@@ -39,11 +39,26 @@ nav a.active { background: #ffcc00; color: #111; }
 
 /* HEADER */
 header {
-  position: relative;
-  padding: 6rem 2rem 5rem;
+  background:
+    radial-gradient(
+      circle at 50% 120%,   /* vanishing point (below center) */
+      rgba(77,166,255,0.25) 0%,
+      rgba(77,166,255,0.12) 25%,
+      rgba(10,10,20,0.9) 60%,
+      #0d0d0d 100%
+    ),
+    linear-gradient(
+      135deg,
+      #0d0d0d,
+      #1a1a2e
+    );
+
+  color: #fff;
+  padding: 5rem 2rem;
   text-align: center;
+  position: relative;
   overflow: hidden;
-  border-bottom: 1px solid #222;
+  z-index: 2;
 }
 
 header h1 {
@@ -62,35 +77,91 @@ header h1 {
 }
 
 /* WAVE */
+/* Top waves container */
 .wave-container {
   position: absolute;
-  top: 65%;
-  left: 50%;
-  width: 200%;
-  height: 80px;
-  transform: translate(-50%, -50%);
+  inset: 0;
   z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
 }
 
-.wave {
+/* ===== GRID (data field) ===== */
+.wave-container::before {
+  content: "";
   position: absolute;
-  width: 50%;
-  height: 100%;
-  background: repeating-linear-gradient(
-    90deg,
-    rgba(255,204,0,0.5),
-    rgba(255,204,0,0.5) 2px,
-    transparent 2px,
-    transparent 6px
-  );
+  inset: 0;
+
+  background:
+    repeating-linear-gradient(
+      to right,
+      rgba(77,166,255,0.08),
+      rgba(77,166,255,0.08) 1px,
+      transparent 1px,
+      transparent 60px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(77,166,255,0.06),
+      rgba(77,166,255,0.06) 1px,
+      transparent 1px,
+      transparent 60px
+    );
+
+  transform: perspective(800px) rotateX(65deg) scale(1.5);
+  transform-origin: top;
+
+  opacity: 0.5;
 }
 
-.wave-left { animation: moveLeft 4s linear infinite; }
-.wave-right { right: 0; animation: moveRight 4s linear infinite; }
+/* ===== SIGNAL PULSE ===== */
+.wave-container::after {
+  content: "";
+  position: absolute;
+  top: 60%;
+  left: -50%;
+  width: 200%;
+  height: 2px;
 
-@keyframes moveLeft { 100% { transform: translateX(-100%);} }
-@keyframes moveRight { 100% { transform: translateX(100%);} }
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(77,166,255,0.9),
+    transparent
+  );
 
+  filter: drop-shadow(0 0 8px rgba(77,166,255,0.6));
+
+  animation: pulseMove 6s linear infinite;
+  opacity: 0; /* controlled by animation */
+}
+
+
+/* smoother loop with fade in/out */
+@keyframes pulseMove {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+
+  5% {
+    opacity: 1; /* appears sooner */
+  }
+
+  45% {
+    transform: translateX(50%);
+    opacity: 1;
+  }
+
+  75% {
+    opacity: 0; /* fades out earlier */
+  }
+
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
 /* SECTIONS */
 .section {
   padding: 6rem 2rem;
