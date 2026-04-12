@@ -63,69 +63,44 @@ header p {
 }
 
 /* ===== YELLOW SCANNING WAVES ===== */
-.wave {
+.audio-wave {
   position: absolute;
-  top: 0;
+  top: 60%;
   left: 0;
   width: 200%;
-  height: 100%;
+  height: 80px;
+  overflow: hidden;
+  z-index: 1;
 
-  background: repeating-linear-gradient(
-    90deg,
-    rgba(80, 160, 255, 0.5),
-    rgba(80, 160, 255, 0.5) 2px,
-    transparent 2px,
-    transparent 6px
-  );
-
-  opacity: 0.7;
-
+  transform: translateZ(0);
   will-change: transform;
-  transform: translate3d(0,0,0);
 }
 
-.wave-left {
-  animation: waveMoveLeft 8s linear infinite;
+.wave-line {
+  fill: none;
+  stroke: #4da6ff;
+  stroke-width: 2;
+  opacity: 0.8;
+
+  filter: drop-shadow(0 0 6px rgba(77,166,255,0.5));
+
+  stroke-dasharray: 200;
+  stroke-dashoffset: 0;
+
+  animation: waveFlow 6s linear infinite;
 }
 
-.wave-right {
-  animation: waveMoveRight 8s linear infinite;
-}
-
-@keyframes waveMoveLeft {
-  from { transform: translate3d(0,0,0); }
-  to   { transform: translate3d(-50%,0,0); }
-}
-
-@keyframes waveMoveRight {
-  from { transform: translate3d(0,0,0); }
-  to   { transform: translate3d(50%,0,0); }
+@keyframes waveFlow {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-200px);
+  }
 }
 
 
-/* ===== SINE WAVE (SMOOTH + LOOPING) ===== */
-.wave-sine {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 200%;
-  height: 100%;
-  z-index: 0;
-  opacity: 0.5;
 
-  will-change: transform;
-  transform: translate3d(0,0,0);
-}
-
-.wave-sine rect {
-  animation: sineDrift 6s linear infinite;
-  transform: translate3d(0,0,0);
-}
-
-@keyframes sineDrift {
-  from { transform: translate3d(0,0,0); }
-  to   { transform: translate3d(-100px,0,0); }
-}
 
 
 /* ===== GLOBAL GPU STABILITY FIXES ===== */
@@ -271,18 +246,24 @@ a.button:hover {
     <!-- Yellow splitting waves -->
     <div class="wave wave-left"></div>
     <div class="wave wave-right"></div>
-
-    <svg class="wave-sine" viewBox="0 0 2000 40" preserveAspectRatio="none">
-  <defs>
-    <pattern id="sinePattern" x="0" y="0" width="100" height="40" patternUnits="userSpaceOnUse">
-      <path d="M0,20 Q25,0 50,20 T100,20"
-            stroke="rgba(200,200,200,0.5)"
-            stroke-width="2"
-            fill="none"/>
-    </pattern>
-  </defs>
-  <rect width="2000" height="40" fill="url(#sinePattern)" />
+    
+<svg class="audio-wave" viewBox="0 0 1200 100" preserveAspectRatio="none">
+  <path class="wave-line"
+    d="M0,50 
+       Q50,20 100,50 
+       T200,50 
+       T300,50 
+       T400,50 
+       T500,50 
+       T600,50 
+       T700,50 
+       T800,50 
+       T900,50 
+       T1000,50 
+       T1100,50 
+       T1200,50" />
 </svg>
+
     <!-- Smooth fully visible sine wave -->
 <!-- <svg class="wave-sine" viewBox="0 0 2000 40" preserveAspectRatio="none">
       <defs>
