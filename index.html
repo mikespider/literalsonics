@@ -42,21 +42,34 @@ header p {
 }
 
 /* Top waves container */
+/* ===== WAVE SYSTEM (SMOOTH + STABLE) ===== */
+
 .wave-container {
   position: absolute;
   top: 60%;
-  left: 50%;
-  width: 200%;
+  left: 0;
+  width: 100%;
   height: 80px;
-  transform: translate(-50%, -50%);
+  overflow: hidden;
   z-index: 1;
+
+  pointer-events: none;
+
+  /* 🔥 stability + performance */
+  contain: layout paint;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
-/* Yellow splitting waves */
+/* ===== YELLOW SCANNING WAVES ===== */
 .wave {
   position: absolute;
-  width: 50%;
+  top: 0;
+  left: 0;
+  width: 200%;
   height: 100%;
+
   background: repeating-linear-gradient(
     90deg,
     rgba(255,204,0,0.5),
@@ -64,34 +77,70 @@ header p {
     transparent 2px,
     transparent 6px
   );
+
   opacity: 0.6;
+
+  will-change: transform;
+  transform: translate3d(0,0,0);
 }
 
-.wave-left { left: 0; animation: moveLeft 3s linear infinite; }
-.wave-right { right: 0; animation: moveRight 3s linear infinite; }
+.wave-left {
+  animation: waveMoveLeft 8s linear infinite;
+}
 
-@keyframes moveLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
-@keyframes moveRight { 0% { transform: translateX(0); } 100% { transform: translateX(100%); } }
+.wave-right {
+  animation: waveMoveRight 8s linear infinite;
+}
 
-/* Sine wave styling and smooth animation */
+@keyframes waveMoveLeft {
+  from { transform: translate3d(0,0,0); }
+  to   { transform: translate3d(-50%,0,0); }
+}
+
+@keyframes waveMoveRight {
+  from { transform: translate3d(0,0,0); }
+  to   { transform: translate3d(50%,0,0); }
+}
+
+
+/* ===== SINE WAVE (SMOOTH + LOOPING) ===== */
 .wave-sine {
   position: absolute;
   top: 0;
-  left: 50%;
-  width: 200%;   /* wider than viewport for smooth loop */
+  left: 0;
+  width: 200%;
   height: 100%;
-  transform: translateX(-50%);
-  z-index: 0;    /* under yellow waves */
+  z-index: 0;
+  opacity: 0.5;
+
+  will-change: transform;
+  transform: translate3d(0,0,0);
 }
 
 .wave-sine rect {
-  animation: sineMove 4s linear infinite;
+  animation: sineDrift 6s linear infinite;
+  transform: translate3d(0,0,0);
 }
 
-@keyframes sineMove {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-100px); } /* slide by exactly one pattern width */
+@keyframes sineDrift {
+  from { transform: translate3d(0,0,0); }
+  to   { transform: translate3d(-100px,0,0); }
 }
+
+
+/* ===== GLOBAL GPU STABILITY FIXES ===== */
+body {
+  transform: translateZ(0);
+}
+
+
+/* ===== OPTIONAL: REDUCE JITTER ON SOME DEVICES ===== */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 
 
 
@@ -223,6 +272,17 @@ a.button:hover {
     <div class="wave wave-left"></div>
     <div class="wave wave-right"></div>
 
+    <svg class="wave-sine" viewBox="0 0 2000 40" preserveAspectRatio="none">
+  <defs>
+    <pattern id="sinePattern" x="0" y="0" width="100" height="40" patternUnits="userSpaceOnUse">
+      <path d="M0,20 Q25,0 50,20 T100,20"
+            stroke="rgba(200,200,200,0.5)"
+            stroke-width="2"
+            fill="none"/>
+    </pattern>
+  </defs>
+  <rect width="2000" height="40" fill="url(#sinePattern)" />
+</svg>
     <!-- Smooth fully visible sine wave -->
 <!-- <svg class="wave-sine" viewBox="0 0 2000 40" preserveAspectRatio="none">
       <defs>
