@@ -17,7 +17,20 @@ body {
 }
 
 header {
-  background: linear-gradient(135deg, #111, #222);
+  background:
+    radial-gradient(
+      circle at 50% 120%,   /* vanishing point (below center) */
+      rgba(77,166,255,0.25) 0%,
+      rgba(77,166,255,0.12) 25%,
+      rgba(10,10,20,0.9) 60%,
+      #0d0d0d 100%
+    ),
+    linear-gradient(
+      135deg,
+      #0d0d0d,
+      #1a1a2e
+    );
+
   color: #fff;
   padding: 5rem 2rem;
   text-align: center;
@@ -25,6 +38,7 @@ header {
   overflow: hidden;
   z-index: 2;
 }
+
 
 header h1 {
   font-size: 3.5rem;
