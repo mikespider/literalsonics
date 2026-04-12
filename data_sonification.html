@@ -15,7 +15,7 @@ body {
   overflow-x: hidden;
 }
 
-/* NAVBAR */
+/* NAV */
 nav {
   position: sticky;
   top: 0;
@@ -25,7 +25,7 @@ nav {
   justify-content: center;
   gap: 2rem;
   padding: 1rem;
-  z-index: 5;
+  z-index: 10;
 }
 
 nav a {
@@ -42,38 +42,17 @@ nav a.active { background: #ffcc00; color: #111; }
 
 /* HEADER */
 header {
-  background:
-    radial-gradient(
-      circle at 50% 120%,
-      rgba(77,166,255,0.25) 0%,
-      rgba(77,166,255,0.12) 25%,
-      rgba(10,10,20,0.9) 60%,
-      #0d0d0d 100%
-    ),
-    linear-gradient(135deg, #0d0d0d, #1a1a2e);
-
-  color: #fff;
-  padding: 5rem 2rem;
-  text-align: center;
   position: relative;
   overflow: hidden;
+  text-align: center;
+  padding: 5rem 2rem;
+  color: #fff;
 }
 
-/* HEADER TEXT */
+/* TITLE */
 header h1 {
   font-size: 3rem;
-  margin: 0;
-  position: relative;
-  z-index: 2;
-}
-
-.subtitle {
-  font-size: 1.2rem;
-  margin-top: 2rem;
-  opacity: 0.8;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 0 2.5rem 0;
   position: relative;
   z-index: 2;
 }
@@ -83,7 +62,6 @@ header h1 {
   position: absolute;
   inset: 0;
   z-index: 1;
-  overflow: hidden;
   pointer-events: none;
 }
 
@@ -141,6 +119,16 @@ header h1 {
   100% { transform: translateX(100%); opacity: 0; }
 }
 
+/* SUBTITLE (NOW PROPERLY BELOW WAVE) */
+.subtitle {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  margin: 0 auto;
+  margin-top: 2.5rem;
+  opacity: 0.85;
+}
+
 /* SECTIONS */
 section {
   padding: 6rem 2rem;
@@ -160,16 +148,16 @@ h2 {
 }
 
 h3 {
-  margin-top: 2rem;
   color: #fff;
+  margin-top: 2rem;
 }
 
 p {
-  margin-bottom: 1.2rem;
   color: #ccc;
+  margin-bottom: 1.2rem;
 }
 
-/* AUDIO EMBED FIX */
+/* AUDIO EMBED */
 .audio-embed {
   display: flex;
   justify-content: center;
@@ -205,6 +193,7 @@ footer {
 
 <!-- HEADER -->
 <header>
+
   <h1>Data Sonification</h1>
 
   <div class="wave-container"></div>
@@ -212,6 +201,7 @@ footer {
   <p class="subtitle">
     Transforming numerical data, shapes, and movements into meaningful, musical experiences.
   </p>
+
 </header>
 
 <!-- SECTION 1 -->
@@ -221,15 +211,11 @@ footer {
     <h2>Exploring Data Through Sound</h2>
 
     <p>
-      Data Sonification is the practice of translating information into auditory experiences, enabling us to perceive patterns, trends, and relationships through listening rather than visual inspection. At Literal Sonics, we take numerical datasets, spatial structures, and motion sequences and map them into musical parameters such as pitch, rhythm, amplitude, and timbre.
+      Data Sonification is the practice of translating information into auditory experiences, enabling us to perceive patterns, trends, and relationships through listening rather than visual inspection. At Literal Sonics, we map datasets into musical parameters such as pitch, rhythm, amplitude, and timbre.
     </p>
 
     <p>
-      This approach offers a deeply intuitive understanding of complex systems. Where graphs and charts show numbers visually, sonification brings them to life, allowing the brain to detect subtle variations, cyclical patterns, and anomalies that might otherwise remain hidden.
-    </p>
-
-    <p>
-      Our work bridges art and science by turning data into compositions that can be explored and felt.
+      This approach reveals structure that is often hidden in visual formats, turning data into something experiential rather than abstract.
     </p>
 
   </div>
@@ -242,15 +228,15 @@ footer {
     <h2>Planetary Distances in Sound</h2>
 
     <p>
-      One of our signature compositions translates the average distances between the planets into sound frequencies. Each planet becomes a tone in a harmonic structure representing the solar system.
+      One of our compositions maps planetary distances into frequency relationships, creating a harmonic model of the solar system.
     </p>
 
     <p>
-      Inner planets generate higher tones while outer planets produce deeper frequencies, forming a celestial sonic gradient.
+      Inner planets produce higher tones, while outer planets generate deeper resonances.
     </p>
 
     <div class="audio-embed">
-      <iframe 
+      <iframe
         scrolling="no"
         frameborder="no"
         allow="autoplay"
