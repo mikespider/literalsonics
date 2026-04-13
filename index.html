@@ -58,65 +58,87 @@ header {
   overflow: hidden;
 
   background:
-    radial-gradient(circle at 50% 120%,
+    radial-gradient(circle at 50% 60%,
       rgba(77,166,255,0.25),
-      rgba(77,166,255,0.12),
-      rgba(10,10,20,0.9),
+      rgba(77,166,255,0.10),
+      rgba(10,10,20,0.95),
       #0d0d0d),
-    linear-gradient(135deg, #0d0d0d, #1a1a2e);
+    linear-gradient(180deg, #07070a, #0d0d0d);
 }
 
-
-
-/* GRID */
+/* ===== IMPROVED HEADER BACKDROP (AUDIO VISUAL LANGUAGE) ===== */
 .wave-container {
   position: absolute;
   inset: 0;
   z-index: 1;
+  overflow: hidden;
 }
 
+/* waveform field */
 .wave-container::before {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: -30%;
 
   background:
-    repeating-linear-gradient(to right, rgba(77,166,255,0.08) 1px, transparent 60px),
-    repeating-linear-gradient(to bottom, rgba(77,166,255,0.06) 1px, transparent 60px);
+    repeating-linear-gradient(
+      90deg,
+      rgba(77,166,255,0.08) 0px,
+      rgba(77,166,255,0.08) 1px,
+      transparent 3px,
+      transparent 14px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,204,0,0.05) 0px,
+      rgba(255,204,0,0.05) 1px,
+      transparent 2px,
+      transparent 22px
+    );
 
-  transform: perspective(800px) rotateX(65deg) scale(1.5);
-  opacity: 0.5;
+  transform: perspective(900px) rotateX(68deg) scale(1.7);
+  opacity: 0.35;
+  filter: blur(0.3px);
 
-  animation: gridFloat 20s linear infinite;
+  animation: audioDrift 14s linear infinite;
 }
 
-@keyframes gridFloat {
-  from { transform: perspective(800px) rotateX(65deg) translateY(0); }
-  to { transform: perspective(800px) rotateX(65deg) translateY(-40px); }
+/* motion feels like evolving sound energy */
+@keyframes audioDrift {
+  from {
+    transform: perspective(900px) rotateX(68deg) translateY(0) scale(1.7);
+  }
+  to {
+    transform: perspective(900px) rotateX(68deg) translateY(-80px) scale(1.7);
+  }
 }
 
-/* SIGNAL */
+/* signal pulse line */
 .wave-container::after {
   content: "";
   position: absolute;
-  top: 60%;
-  left: -50%;
-  width: 200%;
-  height: 2px;
+  top: 55%;
+  left: -60%;
+  width: 220%;
+  height: 3px;
 
-  background: linear-gradient(to right, transparent, rgba(77,166,255,0.9), transparent);
-  filter: drop-shadow(0 0 8px rgba(77,166,255,0.6));
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(77,166,255,0.95),
+    rgba(255,204,0,0.6),
+    transparent
+  );
 
+  filter: blur(1px) drop-shadow(0 0 10px rgba(77,166,255,0.5));
   animation: pulseMove 6s linear infinite;
-  animation-delay: 1.2s;
-  animation-fill-mode: backwards;
+  opacity: 0.85;
 }
 
 @keyframes pulseMove {
   0% { transform: translateX(-120%); opacity: 0; }
   20% { opacity: 1; }
   60% { transform: translateX(0%); opacity: 1; }
-  80% { opacity: 0; }
   100% { transform: translateX(120%); opacity: 0; }
 }
 
@@ -152,10 +174,10 @@ header {
   margin: auto;
 }
 
-/* spacing between products */
 .container + .container {
   margin-top: 6rem;
 }
+
 .container h1 {
   text-align: center;
   color:#ffcc00; 
@@ -186,7 +208,6 @@ header {
 }
 
 /* TYPO */
-
 h1 {
   text-align: center;
   color: #ffcc00 ;
@@ -209,7 +230,6 @@ h3 {
 p {
   color: #ccc;
   font-size: 1.5rem;
-
 }
 
 /* MEDIA */
@@ -267,9 +287,12 @@ footer {
 <div class="container fade-in">
 
 <h1>Data Sonification</h1>
+
 <br>
 <br>
+
 <h3>Exploring Data Through Sound</h3>
+
 <br>
 
 <p>
@@ -285,6 +308,7 @@ Our work bridges art and science. By applying musical logic to raw data, we crea
 </p>
 
 <br>
+
 <h3>Planetary Distances in Sound</h3>
 
 <p>
@@ -302,7 +326,7 @@ The result is a celestial symphony: inner planets create higher, more rapid tone
 </div>
 </section>
 
-<!-- AUDIO SOFTWARE (FIXED STRUCTURE) -->
+<!-- AUDIO SOFTWARE -->
 <section class="section" id="software">
 
 <div class="container fade-in">
@@ -316,7 +340,6 @@ The result is a celestial symphony: inner planets create higher, more rapid tone
 <p>
 Magnetic Field → Sound is a real-time sonification instrument that transforms geomagnetic activity into dynamic audio. Using live data from Earth's magnetosphere, the system converts fluctuations in magnetic intensity into continuously evolving sound structures.
 </p>
-
 
 <p>
 Rather than simulating motion, the plugin listens directly to planetary-scale processes, translating invisible environmental changes into audible phenomena.
@@ -394,7 +417,6 @@ const sections = document.querySelectorAll("header, section");
 const navLinks = document.querySelectorAll("nav a");
 const fadeEls = document.querySelectorAll(".fade-in");
 
-/* ANIMATION BOTH DIRECTIONS */
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -407,7 +429,6 @@ const observer = new IntersectionObserver(entries => {
 
 fadeEls.forEach(el => observer.observe(el));
 
-/* NAV ACTIVE FIXED */
 window.addEventListener("scroll", () => {
   let current = "";
   const scrollPos = window.scrollY + window.innerHeight / 2;
@@ -421,7 +442,6 @@ window.addEventListener("scroll", () => {
     }
   });
 
-  /* bottom fix */
   if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
     current = "software";
   }
