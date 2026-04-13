@@ -260,6 +260,59 @@ footer {
   padding: 3rem;
   color: #666;
 }
+
+
+/* =============================== */
+/* SECTION GROUNDING FIX (ADD ONLY) */
+/* =============================== */
+
+/* creates visible “material blocks” behind each section */
+.section {
+  position: relative;
+}
+
+/* the actual visual panel */
+.section::after {
+  content: "";
+  position: absolute;
+  inset: 2.5rem 1.5rem;
+  border-radius: 18px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.025),
+    rgba(255,255,255,0.008)
+  );
+
+  border: 1px solid rgba(255,255,255,0.06);
+
+  box-shadow:
+    0 20px 80px rgba(0,0,0,0.6);
+
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ensures your real content stays above the panel */
+.section > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* stronger separation between alternating sections */
+.section:nth-child(even)::after {
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.035),
+    rgba(255,255,255,0.010)
+  );
+}
+
+/* subtle breathing space improvement (NO layout change) */
+.section {
+  isolation: isolate;
+}
+
 </style>
 </head>
 
