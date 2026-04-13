@@ -145,25 +145,25 @@ nav a.active { background: #ffcc00; color: #111; }
 /* smoother loop with fade in/out */
 @keyframes pulseMove {
   0% {
-    transform: translateX(0);
+    transform: translateX(-60%);
     opacity: 0;
   }
 
-  5% {
-    opacity: 1; /* appears sooner */
-  }
-
-  45% {
-    transform: translateX(50%);
+  10% {
     opacity: 1;
   }
 
-  75% {
-    opacity: 0; /* fades out earlier */
+  50% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 0;
   }
 
   100% {
-    transform: translateX(100%);
+    transform: translateX(60%);
     opacity: 0;
   }
 }
