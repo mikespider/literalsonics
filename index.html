@@ -1,86 +1,125 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Literal Sonics</title>
-
 <style>
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   margin: 0;
   font-family: 'Helvetica Neue', Arial, sans-serif;
-  background: #0d0d0d;
-  color: #eaeaea;
-  line-height: 1.8;
+  color: #f4f4f4;
+  background: linear-gradient(135deg, #0d0d0d, #1a1a2e);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;   /* ADD THIS */
+  z-index: 0;           /* ADD THIS */
 }
 
-/* NAV */
+header {
+  background:
+    radial-gradient(
+      circle at 50% 120%,   /* vanishing point (below center) */
+      rgba(77,166,255,0.25) 0%,
+      rgba(77,166,255,0.12) 25%,
+      rgba(10,10,20,0.9) 60%,
+      #0d0d0d 100%
+    ),
+    linear-gradient(
+      135deg,
+      #0d0d0d,
+      #1a1a2e
+    );
+
+  color: #fff;
+  padding: 5rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+}
+
+
+header h1 {
+  font-size: 3.5rem;
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+header p {
+  font-size: 1.3rem;
+  margin-top: 1rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.9;
+}
+
+
+ /* NAV */
 nav {
-  position: fixed;
-  width: 100%;
+  position: sticky;
   top: 0;
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(10px);
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(8px);
   display: flex;
   justify-content: center;
   gap: 2rem;
   padding: 1rem;
-  z-index: 100;
+  z-index: 10;
 }
 
 nav a {
   color: #aaa;
   text-decoration: none;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  transition: 0.3s;
 }
 
-nav a:hover {
-  color: #ffcc00;
-}
+nav a:hover { color: #ffcc00; }
+nav a.active { background: #ffcc00; color: #111; }
 
-/* HEADER / HERO */
-header {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
 
-  background:
-    radial-gradient(circle at 50% 120%,
-      rgba(77,166,255,0.25),
-      rgba(77,166,255,0.12),
-      rgba(10,10,20,0.9),
-      #0d0d0d),
-    linear-gradient(135deg, #0d0d0d, #1a1a2e);
-}
-
-/* PARALLAX GRID */
+/* Top waves container */
 .wave-container {
   position: absolute;
   inset: 0;
   z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
 }
 
+/* ===== GRID (data field) ===== */
 .wave-container::before {
   content: "";
   position: absolute;
   inset: 0;
 
   background:
-    repeating-linear-gradient(to right, rgba(77,166,255,0.08) 1px, transparent 60px),
-    repeating-linear-gradient(to bottom, rgba(77,166,255,0.06) 1px, transparent 60px);
+    repeating-linear-gradient(
+      to right,
+      rgba(77,166,255,0.08),
+      rgba(77,166,255,0.08) 1px,
+      transparent 1px,
+      transparent 60px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(77,166,255,0.06),
+      rgba(77,166,255,0.06) 1px,
+      transparent 1px,
+      transparent 60px
+    );
 
   transform: perspective(800px) rotateX(65deg) scale(1.5);
+  transform-origin: top;
+
   opacity: 0.5;
 }
 
-/* PULSE LINE */
+/* ===== SIGNAL PULSE ===== */
 .wave-container::after {
   content: "";
   position: absolute;
@@ -89,128 +128,248 @@ header {
   width: 200%;
   height: 2px;
 
-  background: linear-gradient(to right, transparent, rgba(77,166,255,0.9), transparent);
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(77,166,255,0.9),
+    transparent
+  );
+
   filter: drop-shadow(0 0 8px rgba(77,166,255,0.6));
 
   animation: pulseMove 6s linear infinite;
   animation-delay: 1.2s;
   animation-fill-mode: backwards;
+  opacity: 0; /* controlled by animation */
 }
 
+ 
+
+/* smoother loop with fade in/out */
 @keyframes pulseMove {
-  0% { transform: translateX(-120%); opacity: 0; }
-  20% { opacity: 1; }
-  60% { transform: translateX(0%); opacity: 1; }
-  80% { opacity: 0; }
-  100% { transform: translateX(120%); opacity: 0; }
+  0% {
+    transform: translateX(-60%);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(60%);
+    opacity: 0;
+  }
 }
 
-/* HERO TEXT */
-.hero-content {
+
+
+
+
+/* Sections & content */
+section {
+  padding: 3rem 2rem;
+  max-width: 1100px;
+  margin: auto;
   position: relative;
   z-index: 2;
 }
 
-h1 {
-  font-size: 3rem;
-}
-
-.subtitle {
-  max-width: 700px;
-  margin: 2rem auto;
-  opacity: 0.8;
-}
-
-/* SECTIONS */
-.section {
-  padding: 8rem 2rem;
-}
-
-.container {
-  max-width: 800px;
-  margin: auto;
-}
-
-.section:nth-child(even) {
-  background: #111;
-}
-
-/* AUDIO */
-.audio-embed {
-  display: flex;
-  justify-content: center;
-  margin: 3rem 0;
-}
-
-.audio-embed iframe {
-  max-width: 720px;
-  width: 100%;
-  height: 166px;
-}
-
-/* FOOTER */
-footer {
+h2 {
+  margin-bottom: 1rem;
+  color: #ffcc00;
   text-align: center;
-  padding: 3rem;
-  color: #666;
+  font-size: 2rem;
+}
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.service {
+  background: rgba(255,255,255,0.07);
+  border-radius: 16px;
+  padding: 2rem;
+  backdrop-filter: blur(5px);
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.service:hover {
+  transform: translateY(-5px);
+}
+
+.service h3 {
+  color: #ffcc00;
+}
+
+  .service a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+
+  .services a:hover .service {
+  transform: translateY(-5px);
+}
+
+footer {
+  background: #000;
+  color: #aaa;
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+  position: relative;
+  z-index: 2;
+}
+
+a.button {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.85rem 1.8rem;
+  background: #ffcc00;
+  color: #111;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+}
+
+a.button:hover {
+  background: #ffdb4d;
+  transform: scale(1.05);
+}
+
+/* Background product images */
+.bg-product {
+  position: absolute;
+  top: 50%;
+  width: 600px;
+  transform: translateY(-50%);
+  z-index: 1;   /* CHANGE from 0 → -1 */
+  pointer-events: none;
+  filter: drop-shadow(0 0 15px rgba(255, 204, 0, 0.3));
+}
+
+.bg-left {
+  left: 50px;
+  transform: translateY(-50%) perspective(1000px) rotateY(15deg);
+}
+
+.bg-right {
+  right: 50px;
+  transform: translateY(-50%) perspective(1000px) rotateY(-15deg);
+}
+
+  header, section, footer {
+  position: relative;
+  z-index: 2;
+}
+
+  
+@media (max-width: 768px) {
+  .bg-product {
+    display: none;
+  }
 }
 </style>
 </head>
-
 <body>
-
-<!-- NAV -->
+<!-- Background products -->
+<!-- <img src="product1.png" alt="Product 1" class="bg-product bg-left">-->
+<!--<img src="product2.png" alt="Product 2" class="bg-product bg-right"> -->
 <nav>
-  <a href="#top">Home</a>
-  <a href="#data">Data Sonification</a>
-  <a href="#software">Audio Software</a>
+  <a href="#" class="active">Home</a>
+  <a href="data_sonification.html">Data Sonification</a>
+  <a href="audio_software.html" >Audio Software</a>
+   <a href="aural_snapshots.html">Aural Snapshots</a>
 </nav>
 
-<!-- HERO -->
-<header id="top">
-  <div class="wave-container"></div>
+<header>
+  <h1>Literal Sonics </h1>
+  <p>Revealing the hidden music in numbers, shapes and movements through data sonification.</p>
 
-  <div class="hero-content">
-    <h1>Literal Sonics</h1>
-    <p class="subtitle">
-      Transforming data, movement, and structure into sound.
-    </p>
+  <div class="wave-container">
+    <!-- Yellow splitting waves -->
+    <div class="wave wave-left"></div>
+    <div class="wave wave-right"></div>
+
+    <!-- Smooth fully visible sine wave -->
+<!-- <svg class="wave-sine" viewBox="0 0 2000 40" preserveAspectRatio="none">
+      <defs>
+        <pattern id="sinePattern" x="0" y="0" width="100" height="40" patternUnits="userSpaceOnUse">
+          <path d="M0,20 Q25,0 50,20 T100,20" stroke="rgba(200,200,200,0.5)" stroke-width="2" fill="none"/>
+        </pattern>
+      </defs>
+      <rect width="2000" height="40" fill="url(#sinePattern)" />
+    </svg> -->
+
+
+
+
   </div>
 </header>
 
-<!-- DATA SONIFICATION -->
-<section class="section" id="data">
-<div class="container">
 
-<h2>Data Sonification</h2>
-
-<p>
-Transforming datasets into sound to reveal patterns and relationships through listening.
-</p>
-
-<div class="audio-embed">
-<iframe src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/literal-sonics/solar-system-planets"></iframe>
-</div>
-
-</div>
+<section>
+  <h2>About Us</h2>
+  <p style="text-align:center; max-width:800px; margin:auto;">Literal Sonics transforms what is seen into the heard. We specialize in 
+    <strong>data sonification</strong>, turning patterns of information into sound, creating immersive <strong>aural snapshots</strong> 
+    of places and moments, and developing <strong>sound landscapes</strong> and innovative <strong>audio software</strong>.
+  </p>
 </section>
 
-<!-- AUDIO SOFTWARE -->
-<section class="section" id="software">
-<div class="container">
+<section>
+  <h2>What We Do</h2>
+  <div class="services">
+    <div class="service">
+      <a href="data_sonification.html">
+      <h3>Data Sonification</h3>
+      <p>Transforming numerical data, shapes, and movements into meaningful, musical experiences.</p>
+      </a>
+    </div>
+     <div class="service">
+      <a href="audio_software.html">
+      <h3>Audio Software</h3>
+      <p>Creating tools that empower artists, scientists, and listeners to explore data and sound in new ways.</p>
+    </a>
+   </div>
+    <div class="service">
+       <a href="aural_snapshots.html">
+      <h3>Aural Snapshots</h3>
+      <p>Capturing the sonic essence of a moment in time or a physical location.</p>
+       </a>
+    </div>
+ <!-- <div class="service">
+      <h3>Sound Landscapes</h3>
+      <p>Designing immersive audio environments that tell stories through sound.</p>
+    </div> -->
+  
+  
+  </div>
+</section>
 
-<h2>Audio Software</h2>
-
-<p>
-Tools designed to translate real-world systems into dynamic sound structures.
-</p>
-
-</div>
+<section>
+  <h2>Get in Touch</h2>
+  <p style="text-align:center;">Interested in collaborating, licensing our software, or commissioning a custom sonification? Let’s talk.</p>
+  <p style="text-align:center;"><a href="mailto:info@literalsonics.com" class="button">Contact Us</a></p>
 </section>
 
 <footer>
-<p>© 2025 Literal Sonics</p>
+  <p>&copy; 2025 Literal Sonics. All rights reserved.</p>
 </footer>
-
 </body>
 </html>
