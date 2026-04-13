@@ -138,9 +138,12 @@ nav a.active { background: #ffcc00; color: #111; }
   filter: drop-shadow(0 0 8px rgba(77,166,255,0.6));
 
   animation: pulseMove 6s linear infinite;
+  animation-delay: 1.2s;
+  animation-fill-mode: backwards;
   opacity: 0; /* controlled by animation */
 }
 
+ 
 
 /* smoother loop with fade in/out */
 @keyframes pulseMove {
