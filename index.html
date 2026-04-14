@@ -47,6 +47,16 @@ nav a.active {
   color: #111;
 }
 
+.logo-large {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  width: 300px;
+  height: auto;
+  z-index: 101;
+  pointer-events: none; /* prevents blocking nav clicks */
+}
+
 /* ===== HEADER ===== */
 header {
   height: 100vh;
@@ -233,10 +243,18 @@ p {
 }
 
 /* MEDIA */
-img {
+img:not(#logo,.logo-large){
   display: block;
   margin: 2rem auto;
   max-width: 600px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+#logo {
+  display: block;
+  
+  max-width: 200px;
   width: 100%;
   border-radius: 10px;
 }
@@ -323,22 +341,25 @@ footer {
   <a href="#data">Data Sonification</a>
   <a href="#software">Audio Software</a>
 </nav>
+<img src="LiteralSonicsLogo3.png" class="logo-large">
 
 <header id="top">
   <div class="wave-container"></div>
 
   <div class="hero fade-in">
     <h1>Literal Sonics</h1>
+   
     <p class="subtitle">
-      Transforming numerical data, shapes, and movements into meaningful musical experiences.
+      Transforming numerical data, shapes, and movements into meaningful, musical experiences.
     </p>
   </div>
 </header>
 
 <!-- DATA SONIFICATION -->
 <section class="section" id="data">
-<div class="container fade-in">
 
+<div class="container fade-in">
+<img src="LiteralSonicsLogo3.png" id="logo">
 <h1>Data Sonification</h1>
 
 <br>
@@ -383,6 +404,7 @@ The result is a celestial symphony: inner planets create higher, more rapid tone
 <section class="section" id="software">
 
 <div class="container fade-in">
+  <img src="LiteralSonicsLogo3.png" id="logo">
 
 <h1>Audio Software</h1>
 <br>
@@ -415,6 +437,7 @@ Ambient composition, scientific sonification, installation work, and experimenta
 </div>
 
 <div class="container fade-in">
+
 
 <h2>Whale Migration Sonifier</h2>
 
