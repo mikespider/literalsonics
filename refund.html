@@ -3,114 +3,101 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Terms of Service</title>
+<title>Terms of Service - Literal Sonics</title>
 
 <style>
+html { scroll-behavior: smooth; }
+
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: radial-gradient(circle at top, #0a0a0a, #000);
-    color: #eee;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  margin: 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background: #0d0d0d;
+  color: #eaeaea;
+  line-height: 1.5;
 }
 
-/* HEADER */
-.header {
-    width: 100%;
-    padding: 20px 40px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 10;
+/* NAVBAR (UNCHANGED) */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem;
+  z-index: 100;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(8px);
 }
 
-.logo {
-    font-size: 20px;
-    font-weight: bold;
-    letter-spacing: 2px;
+nav a {
+  color: #aaa;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
 }
 
-/* MAIN WRAPPER */
-.wrapper {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    padding-top: 120px;
+nav a:hover { color: #ffcc00; }
+
+.logo-large {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  width: 300px;
+  z-index: 101;
+  pointer-events: none;
 }
 
-/* CONTENT BOX */
+/* SECTION SYSTEM (REUSED) */
+.section {
+  padding: 10rem 2rem 6rem;
+  position: relative;
+}
+
 .container {
-    max-width: 800px;
-    width: 90%;
-    padding: 40px;
-    background: rgba(255,255,255,0.03);
-    border-radius: 12px;
-    backdrop-filter: blur(10px);
+  max-width: 900px;
+  margin: auto;
 }
 
-/* TEXT */
 h1 {
-    font-size: 2.2em;
-    margin-bottom: 20px;
+  text-align: center;
+  color: #ffcc00;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
 }
 
 p {
-    line-height: 1.7;
-    color: #bbb;
-}
-
-/* LINKS */
-a {
-    color: #aaa;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #fff;
-}
-
-/* BACK LINK */
-.back {
-    display: inline-block;
-    margin-bottom: 20px;
-    font-size: 14px;
+  color: #ccc;
+  font-size: 1.2rem;
+  margin-bottom: 1.2rem;
 }
 
 /* FOOTER */
-.footer {
-    text-align: center;
-    padding: 20px;
-    font-size: 14px;
-    color: #777;
-    border-top: 1px solid rgba(255,255,255,0.05);
-}
-
-.footer a {
-    margin: 0 10px;
+footer {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-<div class="header">
-    <div class="logo">Literal Sonics</div>
-</div>
+<nav>
+  <a href="/">Home</a>
+</nav>
 
-<!-- CONTENT -->
-<div class="wrapper">
-    <div class="container">
+<img src="literalSonicsLogo7.png" class="logo-large">
 
-        <a class="back" href="/">← Back to site</a>
+<section class="section">
+<div class="container">
 
-      <h1>Refund Policy</h1>
+<h1>Refund Policy</h1>
 
-<p>We offer refunds within 14 days of purchase, in accordance with EU consumer protection laws.</p>
+<p>Refunds may be requested within 14 days of purchase.</p>
 
-<p>Due to the nature of digital products, refunds may be denied if the license has been used extensively or abused.</p>
+<p>Due to the nature of digital products, refunds may be denied if the license has been used extensively.</p>
 
 <p>Refund requests must include proof of purchase and be submitted within the 14-day period.</p>
 
@@ -118,16 +105,15 @@ a:hover {
 
 <p>We reserve the right to refuse refund requests that do not meet these conditions.</p>
 
-
-    </div>
 </div>
+</section>
 
-<!-- FOOTER -->
-<div class="footer">
-    <a href="/terms.html">Terms</a> |
-    <a href="/privacy.html">Privacy</a> |
-    <a href="/refund.html">Refunds</a>
-</div>
+<footer>
+  <a href="/terms.html">Terms</a> |
+  <a href="/privacy.html">Privacy</a> |
+  <a href="/refund.html">Refunds</a>
+  <p>© 2025 Literal Sonics</p>
+</footer>
 
 </body>
 </html>
