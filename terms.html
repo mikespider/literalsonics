@@ -11,16 +11,48 @@ body {
     font-family: Arial, sans-serif;
     background: radial-gradient(circle at top, #0a0a0a, #000);
     color: #eee;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
+/* HEADER */
+.header {
+    width: 100%;
+    padding: 20px 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* MAIN WRAPPER */
+.wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding-top: 120px;
+}
+
+/* CONTENT BOX */
 .container {
     max-width: 800px;
-    margin: 80px auto;
+    width: 90%;
     padding: 40px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
 }
 
+/* TEXT */
 h1 {
-    font-size: 2.5em;
+    font-size: 2.2em;
     margin-bottom: 20px;
 }
 
@@ -29,40 +61,72 @@ p {
     color: #bbb;
 }
 
+/* LINKS */
 a {
-    color: #888;
+    color: #aaa;
     text-decoration: none;
 }
 
 a:hover {
     color: #fff;
 }
+
+/* BACK LINK */
+.back {
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    color: #777;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.footer a {
+    margin: 0 10px;
+}
 </style>
 </head>
 
 <body>
 
-<div class="container">
-<a href="/">← Back</a>
+<!-- HEADER -->
+<div class="header">
+    <div class="logo">Literal Sonics</div>
+</div>
 
-<h1>Terms of Service</h1>
+<!-- CONTENT -->
+<div class="wrapper">
+    <div class="container">
 
-<p>By purchasing and using this software, you are granted a non-exclusive, non-transferable license to use the plugin.</p>
+        <a class="back" href="/">← Back to site</a>
 
-<p>You may not redistribute, resell, sublicense, or share the software or license key.</p>
+        <h1>Terms of Service</h1>
 
-<p>This software is provided "as is", without warranty of any kind, express or implied.</p>
+        <p>By purchasing and using this software, you are granted a non-exclusive, non-transferable license to use the plugin.</p>
 
-<p>We reserve the right to update or modify the software and these terms at any time.</p>
+        <p>You may not redistribute, resell, sublicense, or share the software or license key.</p>
 
-<p>Unauthorized use may result in termination of your license.</p>
+        <p>This software is provided "as is", without warranty of any kind, express or implied.</p>
 
+        <p>We reserve the right to update or modify the software and these terms at any time.</p>
+
+        <p>Unauthorized use may result in termination of your license.</p>
+
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    <a href="/terms.html">Terms</a> |
+    <a href="/privacy.html">Privacy</a> |
+    <a href="/refund.html">Refunds</a>
 </div>
 
 </body>
-    <footer style="text-align:center; padding:20px; font-size:14px;">
-  <a href="/terms.html">Terms</a> |
-  <a href="/privacy.html">Privacy</a> |
-  <a href="/refund.html">Refunds</a>
-</footer>
 </html>
