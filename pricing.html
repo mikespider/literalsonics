@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing - Literal Sonics</title>
+
+<style>
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background: #0d0d0d;
+  color: #eaeaea;
+  line-height: 1.5;
+}
+
+/* NAVBAR */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem;
+  z-index: 100;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(8px);
+}
+
+nav a {
+  color: #aaa;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+}
+
+nav a:hover { color: #ffcc00; }
+
+/* LOGO */
+.logo-large {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  width: 300px;
+  z-index: 101;
+  pointer-events: none;
+}
+
+/* SECTION */
+.section {
+  padding: 10rem 2rem 6rem;
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* TYPO */
+h1 {
+  text-align: center;
+  color: #ffcc00;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+
+h2 {
+  color: rgba(77,166,255,1);
+  margin-top: 3rem;
+}
+
+h3 {
+  margin-top: 2rem;
+}
+
+p {
+  color: #ccc;
+  font-size: 1.2rem;
+}
+
+/* PRODUCT BOX */
+.product {
+  margin-top: 3rem;
+  padding: 2rem;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+/* PRICE */
+.price {
+  font-size: 3rem;
+  text-align: center;
+  margin: 1.5rem 0;
+  color: #fff;
+}
+
+/* BUTTONS */
+.buttons {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.btn {
+  display: inline-block;
+  margin: 10px;
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn-primary {
+  background: #ffcc00;
+  color: #111;
+}
+
+.btn-secondary {
+  border: 1px solid #555;
+  color: #ccc;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+/* LIST */
+ul {
+  margin-top: 1rem;
+}
+
+li {
+  margin-bottom: 8px;
+  color: #ccc;
+}
+
+
+.param-table {
+  margin-top: 2rem;
+  border-top: 1px solid #222;
+}
+
+.param-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  padding: 14px 10px;
+  border-bottom: 1px solid #222;
+  align-items: center;
+}
+
+.param-row.header {
+  font-weight: bold;
+  color: #fff;
+  border-bottom: 2px solid #333;
+}
+
+.param-row div {
+  color: #ccc;
+}
+
+.param-row.header div {
+  color: #aaa;
+}
+
+/* subtle hover (nice touch) */
+.param-row:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+  
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="/">Home</a>
+</nav>
+
+<img src="literalSonicsLogo7.png" class="logo-large">
+
+<section class="section">
+<div class="container">
+
+<h1>Earth Magnetic Field Reverb</h1>
+
+<div class="product">
+
+<p style="text-align:center; font-size:1.3rem;">
+Reverb and pitch delay shaped by the pulse of the planet
+</p>
+
+<p>
+Earth Magnetic Field Reverb is not your typical reverb. Instead of static algorithms, this plugin uses real-world geomagnetic field data to continuously modulate both reverb parameters and pitch delay in real time.
+</p>
+
+<p>
+Every note you play carries the subtle fluctuations of Earth's magnetic field.
+</p>
+
+<div class="price">€32</div>
+
+<p style="text-align:center;">
+✔ 30-day free trial<br>
+✔ Full feature access<br>
+✔ One-time purchase
+</p>
+
+<div class="buttons">
+  <a href="#" class="btn btn-secondary">Download Trial</a>
+  <a href="#" class="btn btn-primary">Buy Now</a>
+</div>
+
+</div>
+
+<h2>Features</h2>
+
+<ul>
+<li>🌍 Real magnetic field data controls reverb and pitch delay</li>
+<li>🌀 Magnetic pitch delay with evolving stereo movement</li>
+<li>🎛️ Spin Mode: Room / Width / Room + Width</li>
+<li>📊 4 scaling modes for different modulation behaviors</li>
+<li>🎨 Aurora visual interface reacting in real time</li>
+</ul>
+
+<h2>Parameters</h2>
+
+<div class="param-table">
+
+  <div class="param-row header">
+    <div>Control</div>
+    <div>Range</div>
+    <div>Description</div>
+  </div>
+
+  <div class="param-row">
+    <div>MIX</div>
+    <div>0–100%</div>
+    <div>Reverb wet/dry balance</div>
+  </div>
+
+  <div class="param-row">
+    <div>DECAY</div>
+    <div>0–100%</div>
+    <div>Reverb tail length</div>
+  </div>
+
+  <div class="param-row">
+    <div>SIZE</div>
+    <div>0–100%</div>
+    <div>Room size</div>
+  </div>
+
+  <div class="param-row">
+    <div>DAMP</div>
+    <div>0–100%</div>
+    <div>High frequency damping</div>
+  </div>
+
+  <div class="param-row">
+    <div>WIDTH</div>
+    <div>0–100%</div>
+    <div>Stereo width</div>
+  </div>
+
+  <div class="param-row">
+    <div>WANDER</div>
+    <div>0–100%</div>
+    <div>Magnetic wander amount</div>
+  </div>
+
+  <div class="param-row">
+    <div>SPIN</div>
+    <div>0–100%</div>
+    <div>Spin modulation intensity</div>
+  </div>
+
+  <div class="param-row">
+    <div><strong>PITCH DELAY</strong></div>
+    <div>0–100%</div>
+    <div><strong>Magnetic pitch delay mix</strong></div>
+  </div>
+
+  <div class="param-row">
+    <div><strong>FEEDBACK</strong></div>
+    <div>0–100%</div>
+    <div><strong>Magnetic pitch delay feedback</strong></div>
+  </div>
+
+  <div class="param-row">
+    <div><strong>TIME</strong></div>
+    <div>0–1.00s</div>
+    <div><strong>Magnetic pitch delay time</strong></div>
+  </div>
+
+  <div class="param-row">
+    <div>DATA SPEED</div>
+    <div>0.1–5.0</div>
+    <div>Magnetic data playback speed</div>
+  </div>
+
+  <div class="param-row">
+    <div>SPIN MODE</div>
+    <div>ROOM / WIDTH / ROOM+WIDTH</div>
+    <div>Reverb modulation target</div>
+  </div>
+
+  <div class="param-row">
+    <div>SCALE MODE</div>
+    <div>AVERAGE / DYNAMIC / MULTIPLY / DECIMAL</div>
+    <div>Data scaling method</div>
+  </div>
+
+  <div class="param-row">
+    <div>FREEZE</div>
+    <div>On/Off</div>
+    <div>Infinite reverb freeze</div>
+  </div>
+
+</div>
+
+
+<h2>How It Works</h2>
+
+<p>
+The pitch delay is continuously modulated by Earth's magnetic field:
+</p>
+
+<ul>
+<li>Left channel responds to magnetic angle</li>
+<li>Right channel responds to turbulence</li>
+<li>Mix responds to magnetic magnitude</li>
+</ul>
+
+<p>
+This creates wide, evolving textures perfect for ambient and experimental sound design.
+</p>
+
+<h2>Technical Specifications</h2>
+
+<ul>
+<li>VST3, AU (Standalone optional)</li>
+<li>macOS (Intel + Apple Silicon)</li>
+<li>44.1kHz – 192kHz</li>
+<li>Stereo</li>
+<li>30-day full trial</li>
+</ul>
+
+<h2>Why It’s Different</h2>
+
+<p>
+Unlike traditional effects, this plugin evolves constantly with Earth's magnetic field. Every session is unique.
+</p>
+
+<h2>Perfect For</h2>
+
+<ul>
+<li>Ambient & cinematic soundscapes</li>
+<li>Experimental music</li>
+<li>Film scoring</li>
+<li>Sound design</li>
+</ul>
+
+<h2>System Requirements</h2>
+
+<ul>
+<li>macOS 10.15+</li>
+<li>Intel or Apple Silicon</li>
+<li>50MB disk space</li>
+<li>Internet for license validation</li>
+</ul>
+
+<div class="buttons">
+  <a href="#" class="btn btn-secondary">Download Trial</a>
+  <a href="#" class="btn btn-primary">Buy Now</a>
+</div>
+
+</div>
+</section>
+
+<footer>
+  <a href="/terms.html">Terms</a> |
+  <a href="/privacy.html">Privacy</a> |
+  <a href="/refund.html">Refunds</a>
+  <p>© 2025 Literal Sonics</p>
+</footer>
+
+</body>
+</html>
