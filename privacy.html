@@ -21,13 +21,17 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
+
   display: flex;
   justify-content: center;
-  gap: 2rem;
-  padding: 1rem;
+  align-items: center;
+
+  padding: 0.8rem 0;
+
   z-index: 100;
-  background: rgba(0,0,0,0.85);
-  backdrop-filter: blur(8px);
+
+  backdrop-filter: none;
+  background: rgba(0,0,0,0.95);
 }
 
 nav a {
@@ -79,6 +83,139 @@ footer {
   padding: 3rem;
   color: #666;
 }
+
+
+  /* =========================================
+   MOBILE FIXES
+   ========================================= */
+
+@media (max-width: 768px) {
+
+  /* ---------- NAV ---------- */
+
+  nav {
+    justify-content: center;
+    align-items: center;
+
+    padding: 0.8rem 1rem;
+
+    backdrop-filter: none;
+    background: rgba(0,0,0,0.95);
+  }
+
+  nav a {
+    font-size: 0.95rem;
+    padding: 0.45rem 0.9rem;
+  }
+  
+nav a {
+  margin: 0 auto;
+}
+  
+
+  /* ---------- LOGO ---------- */
+
+  .logo-large {
+
+    position: relative;
+
+    top: auto;
+    left: auto;
+
+    display: block;
+
+    width: 200px;
+    max-width: 200px;
+
+    margin:
+      5.5rem auto 1.5rem auto;
+
+    z-index: 20;
+  }
+
+  /* ---------- SECTION ---------- */
+
+  .section {
+    padding:
+      1rem
+      1rem
+      3rem;
+  }
+
+  /* ---------- TYPOGRAPHY ---------- */
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  /* ---------- BOXES ---------- */
+
+  .product,
+  .content-box {
+
+    padding: 1.2rem;
+
+    border-radius: 14px;
+
+    box-shadow:
+      0 10px 30px rgba(0,0,0,0.45);
+  }
+
+  /* ---------- PRICE ---------- */
+
+  .price {
+    font-size: 2.2rem;
+  }
+
+  /* ---------- TABLE ---------- */
+
+  .param-row {
+
+    grid-template-columns: 1fr;
+
+    gap: 0.3rem;
+  }
+
+  .param-row div {
+    padding: 2px 0;
+  }
+
+  /* ---------- BUTTONS ---------- */
+
+  .btn {
+
+    display: block;
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    margin: 10px 0;
+  }
+
+  /* ---------- VIDEO ---------- */
+
+  .video iframe {
+    border-radius: 10px;
+  }
+
+  /* ---------- FOOTER ---------- */
+
+  footer {
+    padding: 2rem 1rem;
+  }
+}
+
+  
 </style>
 </head>
 
