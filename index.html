@@ -358,6 +358,152 @@ footer {
   isolation: isolate;
 }
 
+
+  /* =========================================
+   MOBILE FIXES (SAFE FOR DESKTOP)
+   ========================================= */
+
+@media (max-width: 768px) {
+
+  /* ---------- NAVBAR ---------- */
+
+  nav {
+    gap: 0.4rem;
+    padding: 0.7rem 0.5rem;
+    flex-wrap: wrap;
+
+    /* less GPU stress on mobile */
+    backdrop-filter: none;
+    background: rgba(0,0,0,0.95);
+  }
+
+  nav a {
+    font-size: 0.85rem;
+    padding: 0.45rem 0.7rem;
+    white-space: nowrap;
+  }
+
+  .logo-large {
+    width: 140px;
+    top: 12px;
+    left: 10px;
+    opacity: 0.9;
+  }
+
+  /* ---------- HEADER ---------- */
+
+  header {
+    height: auto;
+    min-height: 100vh;
+
+    padding-top: 28vh;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    overflow: hidden;
+  }
+
+  .hero {
+    transform: none;
+  }
+
+  .hero h1 {
+    font-size: 2.7rem;
+    line-height: 1.1;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  /* ---------- PERFORMANCE FIX ---------- */
+
+  /* mobile browsers hate huge animated transforms */
+  .wave-container::before {
+
+    animation: none;
+
+    transform:
+      perspective(700px)
+      rotateX(70deg)
+      scale(1.15);
+
+    opacity: 0.18;
+
+    /* blur causes massive repaint cost */
+    filter: none;
+  }
+
+  .wave-container::after {
+
+    animation: pulseMove 10s linear infinite;
+
+    filter: none;
+
+    opacity: 0.7;
+  }
+
+  /* ---------- SECTION PANELS ---------- */
+
+  .section::after {
+    inset: 1rem 0.6rem;
+    border-radius: 14px;
+
+    /* lighter shadows on mobile */
+    box-shadow:
+      0 10px 30px rgba(0,0,0,0.45);
+  }
+
+  /* ---------- TYPOGRAPHY ---------- */
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  /* ---------- MEDIA ---------- */
+
+  img:not(#logo,.logo-large) {
+    max-width: 100%;
+  }
+
+  iframe {
+    width: 100%;
+    height: 240px;
+  }
+
+  /* ---------- SCROLL PERFORMANCE ---------- */
+
+  .fade-in {
+    transform: translateY(20px);
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s ease;
+  }
+
+  /* prevents mobile repaint glitches */
+  .section,
+  header,
+  .wave-container,
+  .hero {
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+}
+
 </style>
 </head>
 
@@ -525,23 +671,32 @@ const sections = document.querySelectorAll("header, section");
 const navLinks = document.querySelectorAll("nav a");
 const fadeEls = document.querySelectorAll(".fade-in");
 
+/* MOBILE SAFE OBSERVER */
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add("visible");
-    } else {
-      entry.target.classList.remove("visible");
+
+      /* keep visible once animated
+         prevents flickering on mobile */
+      observer.unobserve(entry.target);
     }
   });
-}, { threshold: 0.2 });
+}, {
+  threshold: 0.08,
+  rootMargin: "0px 0px -40px 0px"
+});
 
 fadeEls.forEach(el => observer.observe(el));
 
+/* NAV ACTIVE STATE */
 window.addEventListener("scroll", () => {
+
   let current = "";
   const scrollPos = window.scrollY + window.innerHeight / 2;
 
   sections.forEach(section => {
+
     if (
       scrollPos >= section.offsetTop &&
       scrollPos < section.offsetTop + section.offsetHeight
@@ -550,18 +705,21 @@ window.addEventListener("scroll", () => {
     }
   });
 
-  if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
+  if (
+    window.innerHeight + window.scrollY
+    >= document.body.offsetHeight - 10
+  ) {
     current = "software";
   }
 
   navLinks.forEach(link => {
+
     link.classList.remove("active");
+
     if (link.getAttribute("href") === "#" + current) {
       link.classList.add("active");
     }
   });
-});
-</script>
 
-</body>
-</html>
+}, { passive: true });
+</script>
