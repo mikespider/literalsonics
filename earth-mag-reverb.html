@@ -371,12 +371,97 @@ footer a{
 
 
   
-  <div class="buttons">
-    <a href="EarthMagneticReverb.zip"
-   class="btn btn-secondary"
-   download>
-   Download Trial
-</a>
+  <div class="buttons"
+    
+ <div id="trialBox">
+
+  <input
+    type="email"
+    id="emailInput"
+    placeholder="Enter your email"
+    style="
+      padding:1rem;
+      width:100%;
+      max-width:400px;
+      border-radius:12px;
+      border:none;
+      margin-bottom:1rem;
+      font-size:1rem;
+      background:#111;
+      color:white;
+    ">
+
+  <br>
+
+  <button
+    id="trialBtn"
+    class="btn btn-secondary"
+    onclick="submitTrialEmail()" >
+    Get Free Trial
+  </button>
+
+</div>
+
+<div id="downloadBox" style="display:none; margin-top:1rem;">
+
+  <a href="EarthMagneticReverb.zip"
+    class="btn btn-primary"
+    download>
+    Download Trial
+  </a>
+
+</div>
+
+  <script>
+
+async function submitTrialEmail() {
+
+  const email =
+    document.getElementById("emailInput").value;
+
+  if (!email || !email.includes("@")) {
+
+    alert("Please enter a valid email.");
+
+    return;
+  }
+
+  const formURL =
+    "https://docs.google.com/forms/d/e/1FAIpQLSd_VwRRykfyUkD1rMcidgDw0SqKoA7FvXzXgxs7wIwB_WYXOQ/formResponse";
+
+  const formData = new FormData();
+
+  formData.append(
+    "entry.2054451267",
+    email
+  );
+
+  try {
+
+    await fetch(formURL, {
+
+      method: "POST",
+
+      mode: "no-cors",
+
+      body: formData
+
+    });
+
+    document.getElementById("trialBox").style.display = "none";
+
+    document.getElementById("downloadBox").style.display = "block";
+
+  }
+
+  catch (err) {
+
+    alert("Something went wrong.");
+
+  }
+}
+
+</script>
     
     <a href="https://payhip.com/b/wJB0x" class="btn btn-primary">Buy Now</a>
   </div>
