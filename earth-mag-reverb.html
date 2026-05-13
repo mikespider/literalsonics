@@ -106,7 +106,7 @@ p {
   margin: 1.5rem 0;
 }
 
-/* BUTTONS */
+/* BUTTONS FIX */
 .buttons {
   display: flex;
   flex-direction: column;
@@ -115,13 +115,14 @@ p {
   margin-top: 2rem;
 }
 
-/* INPUT WRAPPER */
+/* TRIAL BOX FIX */
 #trialBox {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   max-width: 400px;
+  gap: 10px;
 }
 
 #emailInput {
@@ -135,7 +136,7 @@ p {
   text-align: center;
 }
 
-/* BUTTON STYLE */
+/* BUTTONS */
 .btn {
   display: inline-block;
   padding: 1rem 2rem;
@@ -143,6 +144,7 @@ p {
   text-decoration: none;
   font-weight: bold;
   text-align: center;
+  cursor: pointer;
 }
 
 .btn-primary {
@@ -198,7 +200,6 @@ footer a {
   .btn {
     width: 100%;
   }
-
 }
 </style>
 </head>
@@ -218,7 +219,9 @@ footer a {
 
 <div class="product">
 
-  <img src="reverbMag.png" class="product-image" style="display:block;margin:auto;max-width:500px;width:100%;border-radius:12px;">
+  <img src="reverbMag.png"
+       class="product-image"
+       style="display:block;margin:auto;max-width:500px;width:100%;border-radius:12px;">
 
   <h2>Hear It in Action</h2>
 
@@ -236,7 +239,7 @@ footer a {
     ✔ One-time purchase
   </p>
 
-  <!-- FIXED BUTTON AREA -->
+  <!-- BUTTON AREA FIXED -->
   <div class="buttons">
 
     <div id="trialBox">
@@ -257,12 +260,15 @@ footer a {
     </div>
 
     <div id="downloadBox" style="display:none;">
-      <a href="EarthMagneticReverb.zip" class="btn btn-primary" download>
+      <a href="EarthMagneticReverb.zip"
+         class="btn btn-primary"
+         download>
         Download Trial
       </a>
     </div>
 
-    <a href="https://payhip.com/b/wJB0x" class="btn btn-primary">
+    <a href="https://payhip.com/b/wJB0x"
+       class="btn btn-primary">
       Buy Now
     </a>
 
@@ -270,14 +276,56 @@ footer a {
 
 </div>
 
-<!-- CONTENT -->
+<!-- FEATURES -->
 <div class="content-box">
   <h2>Features</h2>
   <ul>
-    <li>🌍 Real Earth magnetic field controls reverb</li>
-    <li>🌀 Stereo movement pitch delay</li>
-    <li>🎛️ Spin modes</li>
-    <li>📊 Scaling modes</li>
+    <li>🌍 Real Earth magnetic field controls reverb and delay</li>
+    <li>🌀 Evolving stereo pitch movement</li>
+    <li>🎛️ Spin Mode: Room / Width / Hybrid</li>
+    <li>📊 4 scaling modes</li>
+  </ul>
+</div>
+
+<!-- PARAMETERS -->
+<div class="content-box">
+  <h2>Parameters</h2>
+
+  <div class="param-table">
+    <div class="param-row header">
+      <div>Control</div><div>Range</div><div>Description</div>
+    </div>
+    <div class="param-row"><div>MIX</div><div>0–100%</div><div>Wet/dry</div></div>
+    <div class="param-row"><div>DECAY</div><div>0–100%</div><div>Tail length</div></div>
+    <div class="param-row"><div>SIZE</div><div>0–100%</div><div>Room size</div></div>
+    <div class="param-row"><div>DAMP</div><div>0–100%</div><div>HF damping</div></div>
+    <div class="param-row"><div>WIDTH</div><div>0–100%</div><div>Stereo width</div></div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="content-box">
+  <h2>How It Works</h2>
+  <p>Earth magnetic field data modulates reverb space and pitch delay in real time.</p>
+</div>
+
+<!-- SPECS -->
+<div class="content-box">
+  <h2>Technical Specs</h2>
+  <ul>
+    <li>VST3 / AU</li>
+    <li>macOS</li>
+    <li>Stereo processing</li>
+  </ul>
+</div>
+
+<!-- USES -->
+<div class="content-box">
+  <h2>Perfect For</h2>
+  <ul>
+    <li>Ambient music</li>
+    <li>Film scoring</li>
+    <li>Sound design</li>
   </ul>
 </div>
 
@@ -301,7 +349,8 @@ async function submitTrialEmail() {
     return;
   }
 
-  const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSd_VwRRykfyUkD1rMcidgDw0SqKoA7FvXzXgxs7wIwB_WYXOQ/formResponse";
+  const formURL =
+    "https://docs.google.com/forms/d/e/1FAIpQLSd_VwRRykfyUkD1rMcidgDw0SqKoA7FvXzXgxs7wIwB_WYXOQ/formResponse";
 
   const formData = new FormData();
   formData.append("entry.2054451267", email);
