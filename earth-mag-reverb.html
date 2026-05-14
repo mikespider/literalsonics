@@ -13,10 +13,10 @@ body {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   background: #0d0d0d;
   color: #eaeaea;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
-/* NAVBAR */
+/* ================= NAV ================= */
 nav {
   position: fixed;
   top: 0;
@@ -24,7 +24,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.8rem 0;
+  padding: 0.9rem 0;
   z-index: 100;
   background: rgba(0,0,0,0.95);
 }
@@ -39,7 +39,7 @@ nav a {
 
 nav a:hover { color: #ffcc00; }
 
-/* LOGO */
+/* ================= LOGO ================= */
 .logo-large {
   position: absolute;
   top: 10px;
@@ -49,101 +49,95 @@ nav a:hover { color: #ffcc00; }
   pointer-events: none;
 }
 
-/* SECTION */
+/* ================= LAYOUT ================= */
 .section {
   padding: 10rem 2rem 6rem;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1300px;
   margin: auto;
-  padding: 0 20px; /* adds breathing room on small screens */
+  padding: 0 24px;
 }
 
-/* TYPO */
+/* ================= TYPOGRAPHY SYSTEM ================= */
 h1 {
   text-align: center;
   color: #ffcc00;
+  font-size: 2.6rem;
   margin-bottom: 2rem;
-  font-size: 2.5rem;
 }
 
 h2 {
+  font-size: 1.7rem;
+  margin-bottom: 1.2rem;
   color: rgba(77,166,255,1);
-  margin-bottom: 1rem;
-  text-align: center;
 }
 
+/* GLOBAL TEXT (fixes “small text issue”) */
 p {
-  color: #ccc;
-  font-size: 1.2rem;
-  text-align: center;
+  font-size: 1.08rem;
+  line-height: 1.75;
+  color: #cfcfcf;
 }
 
-/* PRODUCT BOX (MORE INTERNAL SPACE) */
-.product {
-  margin-top: 3rem;
-  padding: 3rem; /* increased from 2rem */
-  border-radius: 16px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-}
-
-/* CONTENT BOX (MORE AIR INSIDE) */
+/* ================= BOX SYSTEM ================= */
+.product,
 .content-box {
   margin-top: 3rem;
-  padding: 2.8rem; /* increased from 2rem */
+  padding: 3rem;
   border-radius: 16px;
   background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,255,255,0.08);
   box-shadow: 0 20px 60px rgba(0,0,0,0.6);
 }
 
-/* PRICE */
+/* ================= PRODUCT MEDIA ================= */
+.product-image {
+  display: block;
+  margin: 0 auto 20px;
+  max-width: 520px;
+  width: 100%;
+  border-radius: 12px;
+}
+
+/* ================= VIDEO ================= */
+.video {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.video iframe {
+  width: 100%;
+  max-width: 950px;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  border: none;
+}
+
+/* ================= PRICE ================= */
 .price {
   font-size: 3rem;
   text-align: center;
   margin: 1.5rem 0;
 }
 
-/* BUTTONS FIX */
+/* ================= BUTTON SYSTEM ================= */
 .buttons {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   margin-top: 2rem;
 }
 
-/* TRIAL BOX FIX */
-#trialBox {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 400px;
-  gap: 10px;
-}
-
-#emailInput {
-  padding: 1rem;
-  width: 100%;
-  border-radius: 12px;
-  border: none;
-  font-size: 1rem;
-  background: #111;
-  color: white;
-  text-align: center;
-}
-
-/* BUTTONS */
 .btn {
   display: inline-block;
   padding: 1rem 2rem;
   border-radius: 30px;
-  text-decoration: none;
   font-weight: bold;
+  text-decoration: none;
   text-align: center;
   cursor: pointer;
 }
@@ -161,22 +155,59 @@ p {
 
 .btn:hover { opacity: 0.85; }
 
-/* VIDEO */
-.video {
+/* ================= TRIAL BOX ================= */
+#trialBox {
   display: flex;
-  justify-content: center;
-  margin: 2rem 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 420px;
 }
 
-.video iframe {
+#emailInput {
   width: 100%;
-  max-width: 900px;
-  aspect-ratio: 16 / 9;
+  padding: 1rem;
   border-radius: 12px;
   border: none;
+  background: #111;
+  color: white;
+  text-align: center;
+  font-size: 1rem;
 }
 
-/* FOOTER */
+/* ================= LISTS (FIXED LOOK) ================= */
+.content-box ul,
+.product ul {
+  padding-left: 1.2rem;
+  margin-top: 1rem;
+}
+
+.content-box li,
+.product li {
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+  color: #cfcfcf;
+}
+
+/* ================= PARAM TABLE ================= */
+.param-table {
+  margin-top: 1.5rem;
+}
+
+.param-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  padding: 14px 10px;
+  border-bottom: 1px solid #222;
+}
+
+.param-row.header {
+  font-weight: bold;
+  border-bottom: 2px solid #333;
+}
+
+/* ================= FOOTER ================= */
 footer {
   text-align: center;
   padding: 3rem;
@@ -188,7 +219,7 @@ footer a {
   font-weight: bold;
 }
 
-/* MOBILE */
+/* ================= MOBILE ================= */
 @media (max-width: 768px) {
 
   .logo-large {
@@ -198,8 +229,18 @@ footer a {
     display: block;
   }
 
+  .product,
+  .content-box {
+    padding: 1.5rem;
+  }
+
   .btn {
     width: 100%;
+  }
+
+  .param-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
   }
 }
 </style>
@@ -218,29 +259,30 @@ footer a {
 
 <h1>EMFR - Earth Magnetic Field Reverb</h1>
 
+<!-- PRODUCT -->
 <div class="product">
 
-  <img src="reverbMag.png"
-       class="product-image"
-       style="display:block;margin:auto;max-width:500px;width:100%;border-radius:12px;">
+  <img src="reverbMag.png" class="product-image">
 
   <h2>Hear It in Action</h2>
 
   <div class="video">
-    <iframe src="https://www.youtube.com/embed/E7WrtKfvJmg" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/brGs9yGTK_Y" allowfullscreen></iframe>
   </div>
 
-  <p>Reverb and pitch delay shaped by the pulse of the planet</p>
+  <p style="text-align:center;">
+    Reverb and pitch delay shaped by the pulse of the planet
+  </p>
 
   <div class="price">€30</div>
 
-  <p>
+  <p style="text-align:center;">
     ✔ 30-day free trial<br>
     ✔ Full feature access<br>
     ✔ One-time purchase
   </p>
 
-  <!-- BUTTON AREA FIXED -->
+  <!-- BUTTONS -->
   <div class="buttons">
 
     <div id="trialBox">
@@ -248,43 +290,35 @@ footer a {
       <input
         type="email"
         id="emailInput"
-        placeholder="Enter your email"
-      >
+        placeholder="Enter your email">
 
-      <button
-        id="trialBtn"
-        class="btn btn-secondary"
-        onclick="submitTrialEmail()">
+      <button class="btn btn-secondary" onclick="submitTrialEmail()">
         Get Free Trial
       </button>
 
     </div>
 
     <div id="downloadBox" style="display:none;">
-      <a href="EarthMagneticReverb.zip"
-         class="btn btn-primary"
-         download>
+      <a href="EarthMagneticReverb.zip" class="btn btn-primary" download>
         Download Trial
       </a>
     </div>
 
-    <a href="https://payhip.com/b/wJB0x"
-       class="btn btn-primary">
+    <a href="https://payhip.com/b/wJB0x" class="btn btn-primary">
       Buy Now
     </a>
 
   </div>
-
 </div>
 
 <!-- FEATURES -->
 <div class="content-box">
   <h2>Features</h2>
   <ul>
-    <li>🌍 Real Earth magnetic field controls reverb and delay</li>
-    <li>🌀 Evolving stereo pitch movement</li>
-    <li>🎛️ Spin Mode: Room / Width / Hybrid</li>
-    <li>📊 4 scaling modes</li>
+    <li>🌍 Earth magnetic field controls reverb</li>
+    <li>🌀 Evolving stereo movement</li>
+    <li>🎛️ Spin modes (Room / Width / Hybrid)</li>
+    <li>📊 Multiple scaling systems</li>
   </ul>
 </div>
 
@@ -307,7 +341,7 @@ footer a {
 <!-- HOW IT WORKS -->
 <div class="content-box">
   <h2>How It Works</h2>
-  <p>Earth magnetic field data modulates reverb space and pitch delay in real time.</p>
+  <p>Earth’s magnetic field data is mapped to spatial reverb and pitch delay modulation in real time.</p>
 </div>
 
 <!-- SPECS -->
@@ -356,19 +390,14 @@ async function submitTrialEmail() {
   const formData = new FormData();
   formData.append("entry.2054451267", email);
 
-  try {
-    await fetch(formURL, {
-      method: "POST",
-      mode: "no-cors",
-      body: formData
-    });
+  await fetch(formURL, {
+    method: "POST",
+    mode: "no-cors",
+    body: formData
+  });
 
-    document.getElementById("trialBox").style.display = "none";
-    document.getElementById("downloadBox").style.display = "block";
-
-  } catch (err) {
-    alert("Something went wrong.");
-  }
+  document.getElementById("trialBox").style.display = "none";
+  document.getElementById("downloadBox").style.display = "block";
 }
 </script>
 
