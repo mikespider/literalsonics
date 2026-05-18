@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Earth Magnetic Field Reverb - Literal Sonics</title>
+<title>Earth Magnetic Field FX - Literal Sounds</title>
 
 <style>
 html { scroll-behavior: smooth; }
@@ -263,12 +263,12 @@ footer a {
 <section class="section">
 <div class="container">
 
-<h1>EMFR - Earth Magnetic Field Reverb</h1>
+<h1>EMFFX - Earth Magnetic Field FX</h1>
 
 <!-- PRODUCT -->
 <div class="product">
 
-  <img src="reverbMag.png" class="product-image">
+  <img src="emffx.png" class="product-image">
 
   <h2>Hear It in Action</h2>
 
@@ -277,7 +277,7 @@ footer a {
   </div>
 
   <p style="text-align:center;">
-    Reverb and pitch delay shaped by the pulse of the planet
+    Reverb, pitch delay, and reverse delay shaped by the pulse of the planet
   </p>
 
   <div class="price">€30</div>
@@ -324,7 +324,14 @@ footer a {
     <li>🌍 Earth magnetic field controls reverb</li>
     <li>🌀 Evolving stereo movement</li>
     <li>🎛️ Spin modes (Room / Width / Hybrid)</li>
-    <li>📊 Multiple scaling systems</li>
+    <li>📊 Multiple scaling algorithms (Average / Dynamic / Multiply / Decimal)</li>
+    <li>✨ Aurora pitch delay with magnetic modulation</li>
+    <li>⏪ Reverse delay with geomagnetic mapping</li>
+    <li>🌊 Geomagnetic drift, jitter, and chunk modulation</li>
+    <li>🔁 Three geomagnetic mapping modes</li>
+    <li>⚡ Extreme mode for rough, continuous modulation</li>
+    <li>🎚️ Data speed control (0.1x – 5x)</li>
+    <li>❄️ Freeze mode for infinite sustain</li>
   </ul>
 </div>
 
@@ -332,22 +339,71 @@ footer a {
 <div class="content-box">
   <h2>Parameters</h2>
 
+  <h3 style="margin: 1rem 0 0.5rem 0; color: #7bc5ff;">Reverb Section</h3>
   <div class="param-table">
     <div class="param-row header">
       <div>Control</div><div>Range</div><div>Description</div>
     </div>
-    <div class="param-row"><div>MIX</div><div>0–100%</div><div>Wet/dry</div></div>
-    <div class="param-row"><div>DECAY</div><div>0–100%</div><div>Tail length</div></div>
-    <div class="param-row"><div>SIZE</div><div>0–100%</div><div>Room size</div></div>
-    <div class="param-row"><div>DAMP</div><div>0–100%</div><div>HF damping</div></div>
+    <div class="param-row"><div>REVERB MIX</div><div>0–100%</div><div>Wet/dry balance</div></div>
+    <div class="param-row"><div>DECAY</div><div>0–100%</div><div>Reverb tail length</div></div>
+    <div class="param-row"><div>SIZE</div><div>0–100%</div><div>Perceived room size</div></div>
+    <div class="param-row"><div>HP DAMP</div><div>0–100%</div><div>High-frequency damping</div></div>
     <div class="param-row"><div>WIDTH</div><div>0–100%</div><div>Stereo width</div></div>
+    <div class="param-row"><div>FREEZE</div><div>On/Off</div><div>Infinite reverb sustain</div></div>
+  </div>
+
+  <h3 style="margin: 1.5rem 0 0.5rem 0; color: #7bc5ff;">Magnetic Field Section</h3>
+  <div class="param-table">
+    <div class="param-row header">
+      <div>Control</div><div>Range</div><div>Description</div>
+    </div>
+    <div class="param-row"><div>WANDER</div><div>0–100%</div><div>Directional drift intensity</div></div>
+    <div class="param-row"><div>SPIN</div><div>0–100%</div><div>Rotational movement intensity</div></div>
+    <div class="param-row"><div>SPIN MODE</div><div>Room/Width/Hybrid</div><div>How spin affects the sound</div></div>
+    <div class="param-row"><div>DATA SPEED</div><div>0.1x–5x</div><div>Playback speed of magnetic data</div></div>
+    <div class="param-row"><div>SCALE ALGORITHM</div><div>4 modes</div><div>Data to modulation mapping</div></div>
+  </div>
+
+  <h3 style="margin: 1.5rem 0 0.5rem 0; color: #7bc5ff;">Aurora Pitch Delay Section</h3>
+  <div class="param-table">
+    <div class="param-row header">
+      <div>Control</div><div>Range</div><div>Description</div>
+    </div>
+    <div class="param-row"><div>AURORA</div><div>0–100%</div><div>Pitch delay mix</div></div>
+    <div class="param-row"><div>TIME</div><div>0.02s–2.0s</div><div>Delay time (magnetic modulation)</div></div>
+    <div class="param-row"><div>FEEDBACK</div><div>0–90%</div><div>Delay regeneration</div></div>
+  </div>
+
+  <h3 style="margin: 1.5rem 0 0.5rem 0; color: #7bc5ff;">Reverse Delay Section</h3>
+  <div class="param-table">
+    <div class="param-row header">
+      <div>Control</div><div>Range</div><div>Description</div>
+    </div>
+    <div class="param-row"><div>REVERSE ON/OFF</div><div>On/Off</div><div>Engage reverse delay</div></div>
+    <div class="param-row"><div>DELAY MIX</div><div>0–100%</div><div>Reverse delay wet/dry</div></div>
+    <div class="param-row"><div>TIME ms</div><div>20–2000ms</div><div>Reverse delay length</div></div>
+    <div class="param-row"><div>FEEDBACK</div><div>0–90%</div><div>Reverse regeneration</div></div>
+  </div>
+
+  <h3 style="margin: 1.5rem 0 0.5rem 0; color: #7bc5ff;">Geomagnetic Reverse Mapping</h3>
+  <div class="param-table">
+    <div class="param-row header">
+      <div>Control</div><div>Range</div><div>Description</div>
+    </div>
+    <div class="param-row"><div>CONNECT GEO DATA</div><div>On/Off</div><div>Link reverse to magnetic data</div></div>
+    <div class="param-row"><div>MAP MODE</div><div>Map 1/2/3</div><div>Parameter assignment rotation</div></div>
+    <div class="param-row"><div>ANGLE</div><div>0–100%</div><div>Drift intensity</div></div>
+    <div class="param-row"><div>TURBULENCE</div><div>0–100%</div><div>Jitter amount</div></div>
+    <div class="param-row"><div>MAGNITUDE</div><div>0–100%</div><div>Chunk size modulation</div></div>
+    <div class="param-row"><div>EXTREME</div><div>On/Off</div><div>Continuous vs stable modulation</div></div>
   </div>
 </div>
 
 <!-- HOW IT WORKS -->
 <div class="content-box">
   <h2>How It Works</h2>
-  <p>Earth’s magnetic field data is mapped to spatial reverb and pitch delay modulation in real time.</p>
+  <p>Earth's magnetic field data is mapped to spatial reverb, pitch delay, and reverse delay modulation in real time. The three-dimensional vector components (Bx, By, Bz) from scientific measurements drive every aspect of the processing — from reverb room size to reverse delay read position jitter.</p>
+  <p style="margin-top: 0.5rem;">Three selectable mapping modes allow you to reassign which magnetic parameter controls drift, jitter, and chunk size, giving you flexible control over how the planet's pulse shapes your sound.</p>
 </div>
 
 <!-- SPECS -->
@@ -357,6 +413,9 @@ footer a {
     <li>VST3 / AU</li>
     <li>macOS</li>
     <li>Stereo processing</li>
+    <li>44.1kHz – 96kHz sample rate support</li>
+    <li>Resizable interface (normal + 75% compact mode)</li>
+    <li>Payhip license verification with 2-computer activation</li>
   </ul>
 </div>
 
@@ -367,6 +426,9 @@ footer a {
     <li>Ambient music</li>
     <li>Film scoring</li>
     <li>Sound design</li>
+    <li>Experimental production</li>
+    <li>Data sonification</li>
+    <li>Cinematic atmospheres</li>
   </ul>
 </div>
 
