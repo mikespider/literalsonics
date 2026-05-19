@@ -272,9 +272,18 @@ footer a {
 
   <h2>Hear It in Action</h2>
 
-  <div class="video">
-    <iframe src="https://www.youtube.com/embed/E7WrtKfvJmg" allowfullscreen></iframe>
-  </div>
+ <!-- Place <div> tag where you want the feed to appear -->
+<div id="curator-feed-default-feed-layout"><a href="https://curator.io" target="_blank" class="crt-logo crt-tag">Powered by Curator.io</a></div>
+
+<!-- The Javascript can be moved to the end of the html page before the </body> tag -->
+<script type="text/javascript">
+/* curator-feed-default-feed-layout */
+(function(){
+var i,e,d=document,s="script";i=d.createElement("script");i.async=1;i.charset="UTF-8";
+i.src="https://cdn.curator.io/published/56dd2453-8a01-4c61-b139-f110172ba193.js";
+e=d.getElementsByTagName(s)[0];e.parentNode.insertBefore(i, e);
+})();
+</script>
 
   <p style="text-align:center;">
     Reverb, pitch delay, and reverse delay shaped by the pulse of the planet
