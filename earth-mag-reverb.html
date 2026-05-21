@@ -219,46 +219,49 @@ footer a {
   font-weight: bold;
 }
 
-  /* ================= VIDEO FEED FIX ================= */
+ /* ================= CURATOR VIDEO HEIGHT FIX ================= */
 
-.crt-feed-spacer {
+#curator-feed-default-feed-layout .crt-feed {
   display: grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 24px;
-  align-items: stretch;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+  gap: 24px !important;
+  align-items: stretch !important;
 }
 
-/* EACH VIDEO CARD */
-.crt-post {
+/* EACH CARD */
+#curator-feed-default-feed-layout .crt-post {
   display: flex !important;
-  flex-direction: column;
-  height: 100%;
-  background: rgba(255,255,255,0.03);
-  border-radius: 14px;
-  overflow: hidden;
+  flex-direction: column !important;
+  height: 100% !important;
+  min-height: 520px !important; /* FORCE SAME HEIGHT */
+  border-radius: 14px !important;
+  overflow: hidden !important;
+  background: rgba(255,255,255,0.03) !important;
 }
 
-/* VIDEO AREA */
-.crt-post iframe,
-.crt-post video,
-.crt-post img {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: contain; /* IMPORTANT: no cutting */
-  background: black;
+/* MEDIA AREA */
+#curator-feed-default-feed-layout .crt-media,
+#curator-feed-default-feed-layout iframe,
+#curator-feed-default-feed-layout video,
+#curator-feed-default-feed-layout img {
+  width: 100% !important;
+  aspect-ratio: 16 / 9 !important;
+  object-fit: contain !important;
+  background: black !important;
+  flex-shrink: 0 !important;
 }
 
-/* CONTENT AREA */
-.crt-post-content {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  padding: 16px;
+/* CONTENT */
+#curator-feed-default-feed-layout .crt-post-content {
+  display: flex !important;
+  flex-direction: column !important;
+  flex-grow: 1 !important;
+  padding: 16px !important;
 }
 
-/* MAKES BUTTONS/TEXT ALIGN */
-.crt-post-text {
-  flex-grow: 1;
+/* TEXT AREA */
+#curator-feed-default-feed-layout .crt-post-text {
+  flex-grow: 1 !important;
 }
 
 /* ================= MOBILE ================= */
