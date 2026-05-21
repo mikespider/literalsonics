@@ -219,6 +219,48 @@ footer a {
   font-weight: bold;
 }
 
+  /* ================= VIDEO FEED FIX ================= */
+
+.crt-feed-spacer {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* EACH VIDEO CARD */
+.crt-post {
+  display: flex !important;
+  flex-direction: column;
+  height: 100%;
+  background: rgba(255,255,255,0.03);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* VIDEO AREA */
+.crt-post iframe,
+.crt-post video,
+.crt-post img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain; /* IMPORTANT: no cutting */
+  background: black;
+}
+
+/* CONTENT AREA */
+.crt-post-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 16px;
+}
+
+/* MAKES BUTTONS/TEXT ALIGN */
+.crt-post-text {
+  flex-grow: 1;
+}
+
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
 
